@@ -29,7 +29,7 @@ def on_a_pressed():
             """))
         grandpa_dialogue_1_flag = 0
     if scene_1_conversation == 1:
-        scene1()
+        scene1_dialogue1()
 controller.A.on_event(ControllerButtonEvent.PRESSED, on_a_pressed)
 
 def intro_prologue1():
@@ -210,9 +210,9 @@ def initialize_scene1():
         8888888888855555558888888888888888888888888888855855888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888558885588885888888
         8888888888885555588888888888885888888888888888858885888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888588888588855588888
         """))
-def scene1():
+def scene1_dialogue1():
     global grandpa_dialogue_1_flag, scene_1_conversation
-    old_guy.say_text("Hey Carlos!")
+    old_guy.say_text("Hey, Carlos!")
     grandpa_dialogue_1_flag = 1
     scene_1_conversation = 0
 old_guy: Sprite = None
@@ -225,26 +225,28 @@ initialize_scene1()
 
 def on_on_update():
     global intro_carlos_movement_flag_1, scene_1_conversation
-    if young_guy.x > 50:
-        young_guy.vx = 0
-        young_guy.set_image(img("""
-            . . . . . . f f f f f f . . . .
-            . . . . f f e e e e f 2 f . . .
-            . . . f f e e e e f 2 2 2 f . .
-            . . . f e e e f f e e e e f . .
-            . . . f f f f e e 2 2 2 2 e f .
-            . . . f e 2 2 2 f f f f e 2 f .
-            . . f f f f f f f e e e f f f .
-            . . f f e 4 4 e b f 4 4 e e f .
-            . . f e e 4 d 4 1 f d d e f . .
-            . . . f e e e 4 d d d d f . . .
-            . . . . f f e e 4 4 4 e f . . .
-            . . . . . 4 d d e 2 2 2 f . . .
-            . . . . . e d d e 2 2 2 f . . .
-            . . . . . f e e f 4 5 5 f . . .
-            . . . . . . f f f f f f . . . .
-            . . . . . . . f f f . . . . . .
-            """))
-        intro_carlos_movement_flag_1 = 0
-        scene_1_conversation = 1
+    # Only show next text if not already showing
+    if intro_carlos_movement_flag_1:
+        if young_guy.x > 50:
+            young_guy.vx = 0
+            young_guy.set_image(img("""
+                . . . . . . f f f f f f . . . .
+                . . . . f f e e e e f 2 f . . .
+                . . . f f e e e e f 2 2 2 f . .
+                . . . f e e e f f e e e e f . .
+                . . . f f f f e e 2 2 2 2 e f .
+                . . . f e 2 2 2 f f f f e 2 f .
+                . . f f f f f f f e e e f f f .
+                . . f f e 4 4 e b f 4 4 e e f .
+                . . f e e 4 d 4 1 f d d e f . .
+                . . . f e e e 4 d d d d f . . .
+                . . . . f f e e 4 4 4 e f . . .
+                . . . . . 4 d d e 2 2 2 f . . .
+                . . . . . e d d e 2 2 2 f . . .
+                . . . . . f e e f 4 5 5 f . . .
+                . . . . . . f f f f f f . . . .
+                . . . . . . . f f f . . . . . .
+                """))
+            intro_carlos_movement_flag_1 = 0
+            scene_1_conversation = 1
 game.on_update(on_on_update)
