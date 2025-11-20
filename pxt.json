@@ -1,8 +1,9 @@
 {
-    "name": "Echoes-of-Belize",
+    "name": "Echoes-of-Belize - Copy",
     "description": "",
     "dependencies": {
-        "device": "*"
+        "device": "*",
+        "arcade-text": "github:AqeeAqee/arcade-text#v1.5.2"
     },
     "files": [
         "main.blocks",

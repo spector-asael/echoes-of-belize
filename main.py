@@ -1,13 +1,21 @@
-# Sprite: Old guy already inside the house
+def scene1_dialogue():
+    global grandpa_dialogue_1_flag, scene_1_conversation
+    displayDialogue("Hey, Carlos!", 55, 77, 15, 1)
+    grandpa_dialogue_1_flag = 1
+    scene_1_conversation = 0
 
 def on_a_pressed():
-    global grandpa_dialogue_1_flag
+    global grandpa_dialogue_1_flag, scene_1_conversation2
     # Only show next text if not already showing
     if intro_state1:
         intro_prologue1()
     if intro_state1 == 0:
         if intro_carlos_movement_flag_1 == 1:
             young_guy.vx = 30
+    if scene_1_conversation == 1:
+        scene1_dialogue()
+    if scene_1_conversation2 == 1:
+        scene1_dialogue2()
     if grandpa_dialogue_1_flag == 1:
         young_guy.set_image(img("""
             . . . . f f f f f f . . . . . .
@@ -28,10 +36,15 @@ def on_a_pressed():
             . . . . . . f f f . . . . . . .
             """))
         grandpa_dialogue_1_flag = 0
-    if scene_1_conversation == 1:
-        scene1_dialogue1()
+        scene_1_conversation2 = 1
 controller.A.on_event(ControllerButtonEvent.PRESSED, on_a_pressed)
 
+def scene1_dialogue2():
+    global scene_1_conversation2
+    displayDialogue("What's wrong? ", 55, 77, 15, 1)
+    displayDialogue("It's the last day of school!", 20, 77, 15, 1)
+    displayDialogue("You should be excited!", 55, 77, 15, 1)
+    scene_1_conversation2 = 0
 def intro_prologue1():
     global intro_state1
     game.show_long_text("The year is 2080", DialogLayout.BOTTOM)
@@ -210,17 +223,44 @@ def initialize_scene1():
         8888888888855555558888888888888888888888888888855855888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888558885588885888888
         8888888888885555588888888888885888888888888888858885888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888588888588855588888
         """))
-def scene1_dialogue1():
-    global grandpa_dialogue_1_flag, scene_1_conversation
-    old_guy.say_text("Hey, Carlos!")
-    grandpa_dialogue_1_flag = 1
-    scene_1_conversation = 0
 old_guy: Sprite = None
-scene_1_conversation = 0
-grandpa_dialogue_1_flag = 0
+scene_1_conversation2 = 0
 young_guy: Sprite = None
 intro_carlos_movement_flag_1 = 0
 intro_state1 = 0
+scene_1_conversation = 0
+grandpa_dialogue_1_flag = 0
+dialogueText = ""
+textSprite: TextSprite = None
+speed = 0
+def displayDialogue(text: str, X: number, Y: number, colorText: number, colorBg: number, length: number = 26):
+    global dialogueText, textSprite, speed
+    dialogueText = ""
+    textSprite = textsprite.create(dialogueText, colorBg, colorText)
+    textSprite.set_chars_per_line(length)
+    textSprite.set_position(X, Y)
+    speed = 100
+    index = 0
+    while index <= len(text) - 1:
+        dialogueText = "" + dialogueText + text.char_at(index)
+        if controller.A.is_pressed():
+            speed = 20
+        else:
+            speed = 100
+        pause(speed)
+        textSprite.set_text(dialogueText)
+        index += 1
+    
+    def on_pause_until():
+        pass
+    pause_until(on_pause_until)
+    
+    
+    def on_pause_until2():
+        pass
+    pause_until(on_pause_until2)
+    
+    sprites.destroy(textSprite)
 initialize_scene1()
 
 def on_on_update():

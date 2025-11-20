@@ -1,13 +1,27 @@
-// Sprite: Old guy already inside the house
+function scene1_dialogue () {
+    displayDialogue("Hey, Carlos!", 55, 77, 15, 1, 26)
+    grandpa_dialogue_1_flag = 1
+    scene_1_conversation_flag = 0
+}
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     // Only show next text if not already showing
-    if (intro_state1) {
+    if (intro_flag) {
         intro_prologue1()
     }
-    if (intro_state1 == 0) {
+    if (intro_flag == 0) {
         if (intro_carlos_movement_flag_1 == 1) {
             young_guy.vx = 30
         }
+    }
+    if (scene_1_conversation_flag == 1) {
+        scene1_dialogue()
+    }
+    if (scene_1_conversation2_flag == 1) {
+        scene1_dialogue2()
+    }
+    if (scene1_dialogue1_movement_flag == 1) {
+        scene_1_conversation2_flag = 1
+        scene1_dialogue1_movement_flag = 0
     }
     if (grandpa_dialogue_1_flag == 1) {
         young_guy.setImage(img`
@@ -29,17 +43,41 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
             . . . . . . f f f . . . . . . . 
             `)
         grandpa_dialogue_1_flag = 0
-    }
-    if (scene_1_conversation == 1) {
-        scene1_dialogue1()
+        scene1_dialogue1_movement_flag = 1
     }
 })
+function displayDialogue (text: string, X: number, Y: number, colorText: number, colorBg: number, length: number) {
+    dialogueText = ""
+    textSprite = textsprite.create(dialogueText, colorBg, colorText)
+    textSprite.setCharsPerLine(length)
+    textSprite.setPosition(X, Y)
+    speed = 100
+    for (let index = 0; index <= text.length - 1; index++) {
+        dialogueText = "" + dialogueText + text.charAt(index)
+        if (controller.A.isPressed()) {
+            speed = 20
+        } else {
+            speed = 100
+        }
+        pause(speed)
+        textSprite.setText(dialogueText)
+    }
+    pauseUntil(() => !(controller.A.isPressed()))
+    pauseUntil(() => controller.A.isPressed())
+    sprites.destroy(textSprite)
+}
+function scene1_dialogue2 () {
+    displayDialogue("What's wrong? ", 55, 77, 15, 1, 26)
+    displayDialogue("It's the last  day of school!", 50, 67, 15, 1, 15)
+    displayDialogue("You should be excited!", 32, 77, 15, 1, 26)
+    scene_1_conversation2_flag = 0
+}
 function intro_prologue1 () {
     game.showLongText("The year is 2080", DialogLayout.Bottom)
     game.showLongText("Belize has become a hyper-automized society", DialogLayout.Bottom)
     game.showLongText("Carlos has just finished his last day of highschool", DialogLayout.Bottom)
     game.showLongText("He should be excited! but... something lingers in his mind", DialogLayout.Bottom)
-    intro_state1 = 0
+    intro_flag = 0
 }
 function initialize_scene1 () {
     old_guy = sprites.create(img`
@@ -81,7 +119,7 @@ function initialize_scene1 () {
         . . . . f f . . . f f f . . . . 
         `, SpriteKind.Player)
     young_guy.setPosition(-20, 92)
-    intro_state1 = 1
+    intro_flag = 1
     intro_carlos_movement_flag_1 = 1
     // Set the background to a simple house interior (pixel art)
     scene.setBackgroundImage(img`
@@ -207,17 +245,17 @@ function initialize_scene1 () {
         8888888888885555588888888888885888888888888888858885888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888588888588855588888
         `)
 }
-function scene1_dialogue1 () {
-    old_guy.sayText("Hey, Carlos!")
-    grandpa_dialogue_1_flag = 1
-    scene_1_conversation = 0
-}
 let old_guy: Sprite = null
-let scene_1_conversation = 0
-let grandpa_dialogue_1_flag = 0
+let speed = 0
+let textSprite: TextSprite = null
+let dialogueText = ""
+let scene1_dialogue1_movement_flag = 0
+let scene_1_conversation2_flag = 0
 let young_guy: Sprite = null
 let intro_carlos_movement_flag_1 = 0
-let intro_state1 = 0
+let intro_flag = 0
+let scene_1_conversation_flag = 0
+let grandpa_dialogue_1_flag = 0
 initialize_scene1()
 game.onUpdate(function () {
     // Only show next text if not already showing
@@ -243,7 +281,7 @@ game.onUpdate(function () {
                 . . . . . . . f f f . . . . . . 
                 `)
             intro_carlos_movement_flag_1 = 0
-            scene_1_conversation = 1
+            scene_1_conversation_flag = 1
         }
     }
 })
