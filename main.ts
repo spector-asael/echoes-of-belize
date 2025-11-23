@@ -1233,6 +1233,26 @@ let top_arrow2: Sprite = null
 let expected_arrow_index = 0
 let arrow_list: Sprite[] = []
 let scene2_game_ready_flag = 0
+assets.image`ready`
+assets.image`Set`
+assets.image`left-arrow`
+assets.image`right-arrow`
+assets.image`bottom-arrow`
+assets.image`left-arrow1`
+assets.image`top-arrow`
+assets.image`left-arrow0`
+assets.image`right-arrow0`
+assets.image`right-arrow1`
+assets.image`top-arrow1`
+assets.image`top-arrow0`
+assets.image`bottom-arrow0`
+assets.image`bottom-arrow1`
+assets.image`miss`
+assets.image`boss`
+assets.image`jamal`
+assets.image`ai`
+assets.image`warehouse_background`
+assets.image`go_img`
 initialize_scene1()
 game.onUpdate(function () {
     // Only show next text if not already showing
