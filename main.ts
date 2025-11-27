@@ -183,6 +183,29 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
         expected_arrow_index += 1
     }
 })
+function scene1_dialogue3 () {
+    displayDialogue("Hey, wait! Tell me whats wrong.", 70, 69, 15, 1, 16)
+    displayDialogue("Well I don't have much to look forward to.", 5, 64, 15, 1, 22)
+    displayDialogue("Most jobs are taken over by AI.", 5, 64, 15, 1, 25)
+    displayDialogue("Farming, fishing, construction", 5, 67, 15, 1, 17)
+    displayDialogue("Tourism, programming, even law.", 5, 67, 15, 1, 20)
+    displayDialogue("Feels like there's nothing for me.", 5, 67, 15, 1, 18)
+    displayDialogue("And everywhere I go, I'm watched.", 5, 67, 15, 1, 21)
+    displayDialogue("Drones, checkpoints, scanners", 5, 67, 15, 1, 20)
+    displayDialogue("It's starting to scare me.", 5, 70, 15, 1, 25)
+    displayDialogue("And online?", 8, 75, 15, 1, 26)
+    displayDialogue("Deepfakes,fake news", 5, 75, 15, 1, 26)
+    displayDialogue("Sometimes I can't tell what's real.", 5, 70, 15, 1, 23)
+    displayDialogue("I know what you mean", 80, 70, 15, 1, 12)
+    displayDialogue("Things used to feel different.", 70, 67, 15, 1, 15)
+    displayDialogue("We were free hopeful.", 80, 70, 15, 1, 12)
+    displayDialogue("Even music and art are AI now.", 78, 67, 15, 1, 15)
+    displayDialogue("No human touch in anything.", 78, 67, 15, 1, 14)
+    displayDialogue("We let AI grow without limits.", 78, 67, 15, 1, 15)
+    displayDialogue("We lost more than jobs.", 80, 70, 15, 1, 12)
+    displayDialogue("We lost a part of ourselves.", 78, 70, 15, 1, 15)
+    scene_2_state = 1
+}
 function scene3_dialogue () {
     displayDialogue("Grandpa: That is how it started!", 10, 60, 15, 1, 24)
     displayDialogue("One human replaced, then a second, then a third, until they were all replaced.", 10, 50, 15, 1, 22)
@@ -191,7 +214,7 @@ function scene3_dialogue () {
     displayDialogue("People protested and fought back, but not enough people cared. ", 5, 50, 15, 1, 21)
     displayDialogue("The government then started using    ", 5, 40, 15, 1, 20)
     displayDialogue("AI-generated deepfakes to silence leaders,  spread false information, and the few who   were still fighting became demonized by the public. ", 5, 25, 15, 1, 22)
-    displayDialogue("Privacy died, trust died, and Belize wasn’t Belize anymore. ", 5, 50, 15, 1, 21)
+    displayDialogue("Privacy died, trust died, and Belize wasn't Belize anymore. ", 5, 50, 15, 1, 21)
     scene3_start_flag = 0
     sprites.destroyAllSpritesOfKind(SpriteKind.Player)
 }
@@ -523,7 +546,7 @@ function scene2_game_ready () {
     music.play(music.stringPlayable("E D C - - - - - ", 120), music.PlaybackMode.UntilDone)
 }
 function scene1_dialogue () {
-    displayDialogue("Hey, Carlos!", 55, 77, 15, 1, 26)
+    displayDialogue("Hey, Carlos!", 85, 77, 15, 1, 26)
     grandpa_dialogue_1_flag = 1
     scene_1_conversation_flag = 0
 }
@@ -537,16 +560,25 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
             young_guy.vx = 30
         }
     }
+    // Scene 1 – first greeting
     if (scene_1_conversation_flag == 1) {
         scene1_dialogue()
     }
+    // Scene 1 – "What's wrong?"
     if (scene_1_conversation2_flag == 1) {
         scene1_dialogue2()
     }
+    // Scene 1 – trigger scene1_dialogue2 after movement
     if (scene1_dialogue1_movement_flag == 1) {
         scene_1_conversation2_flag = 1
         scene1_dialogue1_movement_flag = 0
     }
+    // NEW → Scene 1 emotional dialogue sequence
+    if (scene1_dialogue3_flag == 1) {
+        scene1_dialogue3()
+        scene1_dialogue3_flag = 0
+    }
+    // Grandpa sprite change logic
     if (grandpa_dialogue_1_flag == 1) {
         young_guy.setImage(img`
             . . . . f f f f f f . . . . . . 
@@ -569,6 +601,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
         grandpa_dialogue_1_flag = 0
         scene1_dialogue1_movement_flag = 1
     }
+    // Scene 2 start
     if (scene_2_state == 1) {
         initialize_scene2()
     }
@@ -603,6 +636,7 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (scene2_final_dialogue_flag) {
         scene2_final_dialogue2()
     }
+    // Scene 3 start
     if (scene3_start_flag) {
         makeScene3()
         scene3_start_flag = 0
@@ -632,11 +666,14 @@ function displayDialogue (text: string, X: number, Y: number, colorText: number,
     sprites.destroy(textSprite)
 }
 function scene1_dialogue2 () {
-    displayDialogue("What's wrong? ", 55, 77, 15, 1, 26)
-    displayDialogue("It's the last  day of school!", 50, 67, 15, 1, 15)
-    displayDialogue("You should be excited!", 32, 77, 15, 1, 26)
+    displayDialogue("What's wrong? ", 80, 77, 15, 1, 26)
+    displayDialogue("It's the last day of school!", 80, 67, 15, 1, 14)
+    displayDialogue("You should be excited!", 80, 67, 15, 1, 14)
     scene_1_conversation2_flag = 0
-    scene_2_state = 1
+    young_guy.vx = -30
+    pause(1000)
+    young_guy.vx = 0
+    scene1_dialogue3_flag = 1
 }
 function test1 () {
     miss_counter = 0
@@ -5971,7 +6008,7 @@ let scene2_final_dialogue_flag = 0
 let scene2_game_ready2_flag = 0
 let rhthym_game_boss: Sprite = null
 let scene_2_initial_dialogue = 0
-let scene_2_state = 0
+let scene1_dialogue3_flag = 0
 let scene1_dialogue1_movement_flag = 0
 let scene_1_conversation2_flag = 0
 let young_guy: Sprite = null
@@ -5984,6 +6021,7 @@ let right_arrow2: Sprite = null
 let left_arrow2: Sprite = null
 let ready: Sprite = null
 let scene3_start_flag = 0
+let scene_2_state = 0
 let miss: Sprite = null
 let top_arrow2: Sprite = null
 let expected_arrow_index = 0
