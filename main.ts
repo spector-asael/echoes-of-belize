@@ -187,25 +187,29 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
 function scene1_dialogue3 () {
     displayDialogue("Hey, wait! Tell me whats wrong.", 70, 69, 15, 1, 16)
     displayDialogue("Well I don't have much to look forward to.", 5, 64, 15, 1, 22)
-    displayDialogue("Most jobs are taken over by AI.", 5, 64, 15, 1, 25)
-    displayDialogue("Farming, fishing, construction", 5, 67, 15, 1, 17)
-    displayDialogue("Tourism, programming, even law.", 5, 67, 15, 1, 20)
+    displayDialogue("Most jobs are taken  over by AI.", 5, 64, 15, 1, 19)
+    displayDialogue("Farming, fishing, construction...", 5, 67, 15, 1, 17)
+    displayDialogue("tourism, programming,     even law.", 5, 67, 15, 1, 21)
     displayDialogue("Feels like there's nothing for me.", 5, 67, 15, 1, 18)
-    displayDialogue("And everywhere I go, I'm watched.", 5, 67, 15, 1, 21)
-    displayDialogue("Drones, checkpoints, scanners", 5, 67, 15, 1, 20)
-    displayDialogue("It's starting to scare me.", 5, 70, 15, 1, 25)
-    displayDialogue("And online?", 8, 75, 15, 1, 26)
-    displayDialogue("Deepfakes,fake news", 5, 75, 15, 1, 26)
-    displayDialogue("Sometimes I can't tell what's real.", 5, 70, 15, 1, 23)
-    displayDialogue("I know what you mean", 80, 70, 15, 1, 12)
+    displayDialogue("And everywhere I go,    I'm watched.", 5, 67, 15, 1, 21)
+    displayDialogue("Drones, checkpoints,     scanners", 5, 67, 15, 1, 20)
+    displayDialogue("It's starting to scare me.", 5, 70, 15, 1, 14)
+    displayDialogue("And online?", 8, 75, 15, 1, 27)
+    displayDialogue("Deepfakes, fake news", 5, 75, 15, 1, 26)
+    displayDialogue("Sometimes I can't tell      what's real.", 5, 70, 15, 1, 23)
+    displayDialogue("I know what you mean...", 80, 70, 15, 1, 12)
     displayDialogue("Things used to feel different.", 70, 67, 15, 1, 15)
-    displayDialogue("We were free hopeful.", 80, 70, 15, 1, 12)
-    displayDialogue("Even music and art are AI now.", 78, 67, 15, 1, 15)
-    displayDialogue("No human touch in anything.", 78, 67, 15, 1, 14)
-    displayDialogue("We let AI grow without limits.", 78, 67, 15, 1, 15)
-    displayDialogue("We lost more than jobs.", 80, 70, 15, 1, 12)
-    displayDialogue("We lost a part of ourselves.", 78, 70, 15, 1, 15)
+    displayDialogue("We were free... We were hopeful.", 65, 70, 15, 1, 16)
+    displayDialogue("Even music and art are AI now.", 70, 67, 15, 1, 15)
+    displayDialogue("No human touch in anything.", 75, 67, 15, 1, 14)
+    displayDialogue("We let AI grow without limits.", 70, 67, 15, 1, 15)
+    displayDialogue("We lost more than jobs.", 70, 70, 15, 1, 12)
+    displayDialogue("We lost a part of ourselves.", 75, 70, 15, 1, 15)
+    displayDialogue("We should have done more to stop it...", 50, 70, 15, 1, 19)
+    displayDialogue("But...", 78, 70, 15, 1, 15)
     scene_2_state = 1
+    scene1_flag = 0
+    scene2_flag = 1
 }
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     if (s4_round1 == 1) {
@@ -236,6 +240,8 @@ function s4_finalDialogue () {
     displayDialogue("...of what's real", 36, 70, 15, 1, 18)
     displayDialogue("and what's fake.", 36, 70, 15, 1, 16)
     scene4_finalDialogue = 0
+    scene5_flag = 1
+    scene5_dialogue_flag = 1
 }
 function scene3_dialogue () {
     scene2_game_ready2_flag = 0
@@ -250,6 +256,8 @@ function scene3_dialogue () {
     scene3_start_flag = 0
     sprites.destroyAllSpritesOfKind(SpriteKind.Player)
     scene4_inital_scene = 1
+    scene3_flag = 0
+    scene4_flag = 1
 }
 function scene2_game_ready () {
     music.play(music.stringPlayable("- - D - D - E - ", 120), music.PlaybackMode.InBackground)
@@ -583,58 +591,7 @@ function scene1_dialogue () {
     grandpa_dialogue_1_flag = 1
     scene_1_conversation_flag = 0
 }
-controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
-    // Only show next text if not already showing
-    if (intro_flag) {
-        intro_prologue1()
-    }
-    if (intro_flag == 0) {
-        if (intro_carlos_movement_flag_1 == 1) {
-            young_guy.vx = 30
-        }
-    }
-    // Scene 1 – first greeting
-    if (scene_1_conversation_flag == 1) {
-        scene1_dialogue()
-    }
-    // Scene 1 – "What's wrong?"
-    if (scene_1_conversation2_flag == 1) {
-        scene1_dialogue2()
-    }
-    // Scene 1 – trigger scene1_dialogue2 after movement
-    if (scene1_dialogue1_movement_flag == 1) {
-        scene_1_conversation2_flag = 1
-        scene1_dialogue1_movement_flag = 0
-    }
-    // NEW → Scene 1 emotional dialogue sequence
-    if (scene1_dialogue3_flag == 1) {
-        scene1_dialogue3()
-        scene1_dialogue3_flag = 0
-    }
-    // Grandpa sprite change logic
-    if (grandpa_dialogue_1_flag == 1) {
-        young_guy.setImage(img`
-            . . . . f f f f f f . . . . . . 
-            . . . f 2 f e e e e f f . . . . 
-            . . f 2 2 2 f e e e e f f . . . 
-            . . f e e e e f f e e e f . . . 
-            . f e 2 2 2 2 e e f f f f . . . 
-            . f 2 e f f f f 2 2 2 e f . . . 
-            . f f f e e e f f f f f f f . . 
-            . f e e 4 4 f b e 4 4 e f f . . 
-            . . f e d d f 1 4 d 4 e e f . . 
-            . . . f d d d d 4 e e e f . . . 
-            . . . f e 4 4 4 e e f f . . . . 
-            . . . f 2 2 2 e d d 4 . . . . . 
-            . . . f 2 2 2 e d d e . . . . . 
-            . . . f 5 5 4 f e e f . . . . . 
-            . . . . f f f f f f . . . . . . 
-            . . . . . . f f f . . . . . . . 
-            `)
-        grandpa_dialogue_1_flag = 0
-        scene1_dialogue1_movement_flag = 1
-    }
-    // Scene 2 start
+function scene2_A_controls() {
     if (scene_2_state == 1) {
         initialize_scene2()
     }
@@ -669,7 +626,8 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (scene2_final_dialogue_flag) {
         scene2_final_dialogue2()
     }
-    // Scene 3 start
+}
+function scene3_A_controls () {
     if (scene3_start_flag) {
         makeScene3()
         scene3_start_flag = 0
@@ -677,6 +635,8 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
             scene3_dialogue()
         }
     }
+}
+function scene4_A_controls() {
     if (scene4_inital_scene) {
         initialize_scene4()
     }
@@ -691,6 +651,33 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     }
     if (scene4_finalDialogue == 1) {
         s4_finalDialogue()
+        scene5_dialogue_flag = 1
+        scene4_flag = 0
+        scene5_flag = 1
+    }
+}
+function scene5_A_controls () {
+    if (scene5_dialogue_flag == 1) {
+        initialize_scene5()
+    }
+}
+controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (scene1_flag == 1) {
+    	scene1_A_controls()
+    }
+    if (scene2_flag == 1) {
+        scene2_A_controls()
+    }
+    if (scene3_flag == 1) {
+        scene3_A_controls()
+    }
+    
+    if (scene4_flag == 1) {
+        scene4_A_controls()
+    }
+
+    if (scene5_flag == 1) {
+        scene5_A_controls()
     }
 })
 function displayDialogue (text: string, X: number, Y: number, colorText: number, colorBg: number, length: number) {
@@ -699,13 +686,11 @@ function displayDialogue (text: string, X: number, Y: number, colorText: number,
     textSprite.setCharsPerLine(length)
     textSprite.setPosition(X, Y)
     speed = 100
+    music.play(music.stringPlayable("E3 G3 F3 F3 - - F3 G3", 500), music.PlaybackMode.InBackground)
+    music.play(music.stringPlayable("A3 - G3 - - F3 - A3", 500), music.PlaybackMode.InBackground)
     for (let index = 0; index <= text.length - 1; index++) {
         dialogueText = "" + dialogueText + text.charAt(index)
-        if (controller.A.isPressed()) {
-            speed = 20
-        } else {
-            speed = 100
-        }
+            speed = 10
         pause(speed)
         textSprite.setText(dialogueText)
     }
@@ -1082,8 +1067,6 @@ function round1 () {
     }
 }
 function test1 () {
-    miss_counter = 0
-    info.setScore(0)
     arrow_list = [
     sprites.create(img`
         ....................
@@ -1587,10 +1570,10 @@ function test1 () {
     for (let arrow_index2 = 0; arrow_index2 <= 18; arrow_index2++) {
         arrow_y += -33
         arrow_list[arrow_index2].setPosition(arrow_x[arrow_index2], arrow_y)
-        arrow_list[arrow_index2].setVelocity(0, 69)
+        arrow_list[arrow_index2].setVelocity(0, 67)
     }
 }
-controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
+function scene2_leftcontrol() {
     if (scene2_game_ready_flag || scene2_game_ready2_flag) {
         if (arrow_list[expected_arrow_index].kind() == SpriteKind.left_arrow) {
             if (!(arrow_list[expected_arrow_index].overlapsWith(left_arrow2))) {
@@ -1767,6 +1750,8 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     if (expected_arrow_index < arrow_list.length - 1) {
         expected_arrow_index += 1
     }
+}
+function scene4_leftcontrol() {
     if (s4_round1 == 1) {
         selector.setPosition(60, 105)
     }
@@ -1776,10 +1761,17 @@ controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
     if (s4_round3 == 1) {
         selector.setPosition(60, 105)
     }
+}
+controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (scene2_flag == 1) {
+        scene2_leftcontrol()
+    }
+    if (scene4_flag == 1) {
+        scene4_leftcontrol()
+    }
 })
 function test2 () {
     miss_counter = 0
-    info.setScore(0)
     arrow_list = [
     sprites.create(img`
         ....................
@@ -5160,6 +5152,132 @@ function test2 () {
         arrow_list7[arrow_index28].setVelocity(0, 300)
     }
 }
+function scene5_end () {
+	sprites.destroyAllSpritesOfKind(SpriteKind.Player)
+    scene.setBackgroundImage(img`
+        eeeee2222222222222222222222222222222222ee2222ee2222ee2222222eeeee2222222222222222222222222222222222ee22222eeee222ee2eeeee2222222222222222222222222222222222ee222
+        222eeeee22222222222222222222222222222eee2222eeee2222ee222222222eeeee22222222222222222222222222222eee2222eeeee222ee22222eeeee22222222222222222222222222222eee2222
+        222222eeeeeee222222222222222222222eeee22222eeeeee2222eee2222222222eeeeeee222222222222222222222eeee22222eeee2222ee222222222eeeeeee222222222222222222222eeee22222e
+        222222222eeeeeeeeeeeeee2222222eeeee222222eeee22eee2222eeee22222222222eeeeeeeeeeeeee2222222eeeee222223eeee22222eeee22222222222eeeeeeeeeeeeee2222222eeeee222222eee
+        e222222222222222222222222222eeee2222222eeee22222eef22222eeeee222222222222222222222222222eeee2333333eeee22222efe2eeeee222222222222222222222222222eeee2222222eeee2
+        eeeeeeee22222222222222222222222222222eee2222222eeeefe222222eeeeeeeee22222222222222333333333333322eee2222222efe22222eeeeeeeee22222222222222222222222222222eee2222
+        2222eeeeeeeee222222222222222222222eeee2222222eeeeeeeffe222222222eeeeeeeee222223333333333322222eeee2223322effeee222322222eeeeeeeee222222222222222222222eeee222222
+        2223322222222222222222222222222eeee2222222eeeeeeee222efffe222222222222222222222222222222222eeee2233332efffe22eeeee233333222222222222222222222222222eeee2222222ee
+        2222233332222222222222222222222222222222eeeeeeeee22222eefffe2222222222222222222222222222222233333332efffee22222eeeee2233333333333333333332222222222222222222eeee
+        eeee22233333333333333332222222222222eeeeee222222222eeeee22ffffee22222222223333333333333333333332eeffff22eeeee22222eeeeee23333333333333222222222222222222eeeeeeee
+        eeeeeeeeee233333333332222222222eeeeeee2222222222eeeee2222ffeefffffffee2222222222223333333332fffffffeeff2222eeeee222222eeeeeeee222222222222222222222eeeeeeeeeeeee
+        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee22eeeeeeee2222eee222222ffeeeeeeeeeeffffffffffffffffffffffffeeeeeeeeeeff222222eee2222eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+        eeeeeeeeeee22222222222222ee22222222222222222222222222effeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffe22222222222222222222222222ee22222222222222eeeeeeeeeee
+        eeeeeeeeee22222222222222222eeee2222222222222222222efffeeeeeeeeeeeeeeeeee2eeeeeeeeeeeeeeeeee2eeeeeeeeeeeeeefffe2222222222222222222eeee22222222222222222eeeeeeeeee
+        eeeeeeeeee222222222222222222eeeeeeee222222222eeefffeeeeeeeeeeeeeeeeeeeee222222eeeeeeeeee2222eeeeeeeeeeeeeeeeefffeee222222222eeeeeeee222222222222222222eeeeeeeeee
+        eeeeeeeee2222222222222222222eeeeeeeeeeeeeeeeffffeeeeeeeeeeeeeeeeeeeeeeee22222222222222222222ee2eeeeeeeeeeeeeeeeeffffeeeeeeeeeeeeeeee2222222222222222222eeeeeeeee
+        eeeeeeeee2222222222222222222ee2222effffffffffffeeeeeeeeeeeeeeeeeeeeeeeee22222222222222222222ee22eeeeeeeeeeeeeeeefffffffffffffe2222ee2222222222222222222eeeeeeeee
+        eeeeeeee22e22222222222222222ee2222eeee2efffffffeeeeeeeeeeeeeeeeeeeee22ee22222222222222222222e222eeeeeeeeeeeeeeeeffffffffe2eeee2222ee22222222222222222e22eeeeeeee
+        eeeeeeee2222222222222222222ee22222ee22eeffffffeeeeeeeeeeeeeeeeeeeeee22ee22222222222222222222e222eeeeeeeeeeeeeeeeffffffffee22ee22222ee2222222222222222222eeeeeeee
+        eeeeeeee2e2222222222222222eee22222ee22efffffffeeeeeeeeeeeeeeeeeeeeee22ee22222222222222222222e222eeeeeeeeeeeeeeeefffffffffe22ee22222eee2222222222222222e2eeeeeeee
+        eeeeeee22e2222222222222222ee222222e22eefffffffeeeeeeeeeeeeeeeeeeeeee22ee22222222222222222222e222eeeeeeeeeeeeeeeefffffffffee22e222222ee2222222222222222e22eeeeeee
+        eeeeeee22e222222222222222ee222222ee22effffffffeeeeeeeeeeeeeeeeee2eee22ee22222222222222222222e222eeee2eeeeeeeeeeeefffffffffe22ee222222ee222222222222222e22eeeeeee
+        eeeeee22e2222222222222222ee222222e22eeffffffffeeeeeeeeeeeeeeeeee2eee22ee22222222222222222222e2222eee2eeeeeeeeeeeefffffffffee22e222222ee2222222222222222e22eeeeee
+        eeeeee22e222222222222222ee222222ee2eeeffffffffeeeeeeeeeeeeeeeeee2ee222e222222222222222222222e2222eee2eeeeeeeeeeeefffffffffe3e2ee222222ee222222222222222e22eeeeee
+        eeeee22ee222222222222222ee22222ee22eefffffffffeeeeeeeeeeeeeeeeee2ee222e2222222222222222222222e222eee2eeeeeeeeeeeeffffffffffe322ee22222ee222222222222222ee22eeeee
+        eeeee22e222222222222222ee222222ee2eeeffffffffeeeeeeeeeeeeeeeeee22ee222e2222222222222222222222e222eee2eeeeeeeeeeeeffffffffffe3e2ee222222ee222222222222222e22eeeee
+        eeee22ee222222222222222e222222ee22eefffffffffeeeeeeeeeeeeeeeeee22ee222e2222222222222222222222e222eee22eeeeeeeeeeeeffffffffffe322ee222222e222222222222222ee22eeee
+        eeee22ee22e22222222222ee22222ee22eeffffffffffeeeeeeeeeeeeeeeeee22ee222e2222222222222222222222e222eeee2eeeeeeeeeeeefffffffffff3322ee22222ee22222222222e22ee22eeee
+        eeee2ee222222222222222e222222ee32eeffffffffffeeeeeeeeeeeeeeeeee22ee222e2222222222222222222222e2222eee2eeeeeeeeeeeefffffffffffe332ee222222e222222222222222ee2eeee
+        eee22ee22e22222222222e222222ee32eeffffffeffffeeeeeeeeeeeeeeeeee22ee222e2222222222222222222222e2222eee2eeeeeeeeeeeeffffffffffff3322ee222222e22222222222e22ee22eee
+        eee2ee222e22222222222e22222ee23eeeffffffeffffeeeeeeeeeeeeeeeeee22ee222e2222222222222222222222e2222eee2eeeeeeeeeeeeffffffffffffe3322ee22222e22222222222e222ee2eee
+        ee22ee22e22222222222e222222ee32eefffffffefffeeeeeeeeeeeeeeeeeee22ee222e2222222222222222222222e2222eee2eeeeeeeeeeeeeffffffffffffe332ee222222e22222222222e22ee22ee
+        ee2eee2ee2222222222e222222ee33eeefffffffefffeefeeeeeeeeeeeeeee222ee22ee2222222222222222222222e2222eee22eeeeeeeeeeeeffffffffffffe3322ee222222e2222222222ee2eee2ee
+        eeeee22ee2222222222e22222ee33eeeffffffffffffeefeeeeeeeeeeeeeee22eee22ee2222222222222222222222e2222eee22eeeeeeeeeeeefffffffffffffe3322ee22222e2222222222ee22eeeee
+        eeeee2ee2222222222222222eee33eeffffffffeffffeefeeeeeeeeeeeeeee22eee22ee2222222222222222222222e2222eee22eeeeeeeeeeeefeffffffffffffe332eee2222222222222222ee2eeeee
+        eeee22ee2222222222222222ee33eeeffffffffeffffeefeeeeeeeeeeeeeee22ee222ee2222222222222222222222e2222eee22eeeeeeeeeeeefeffffefffffffe3332ee2222222222222222ee22eeee
+        eeee2ee2222222222222222ee33eeefffffffffeffffeefeeeeeeeeeeeeeee22ee222e22222222222222222222222e2222eee22eeeeeeeeeeeeeeffffeffffffffe3322ee2222222222222222ee2eeee
+        eeee2ee222222222222222ee333eeffffffffffefffeeeeeeeeeeeeeeeeeee22ee222e22222222222222222222222e2222eee22eeeeeeeeeeeeeeefffefffffffffe3322ee222222222222222ee2eeee
+        eee2ee2222222222222222ee33eeeffffffffffefffeeeeeeeeeeeeeeeeeee22ee222e22222222222222222222222e22222ee22eeeeeeeeeeeeeeefffefffffffffee332ee2222222222222222ee2eee
+        eee2ee222222222222222ee33eeefffffffffffefffeefeeeeeeeeeeeeeeee22ee222e22222222222222222222222ee2222eee2eeeeeeeeeeeeeeefffeffffffffffe3332ee222222222222222ee2eee
+        ee2ee2222222222222222e33eeefffffffffffeefffeefeeeeeeeeeeeeeee222ee222e22222222222222222222222ee2222eee22eeeeeeeeeeeeeeffffeffffffffffe3322e2322222222222222ee2ee
+        ee2ee222222222222232e333eeffffffffffffeefffeefeeeeeeeeeeeeeee22eee222e22222222222222222222222ee2222eee22eeeeeeeeeeeeeeefffefffffffffffe3322e322222222222222ee2ee
+        e2ee2222222222222322e33eeeffffffffffffeefffeefeeeeeeeeeeeeeee22ee2222e22222222222222222222222ee2222eee22eeeeeeeeeeeeeeefffefffffffffffee332e2322222222222222ee2e
+        e2ee222222222222332e33eeefffffffffffffeefffeefeeeeeeeeeeeeeee22ee2222e22222222222222222222222ee2222eee22eeeeeeeeeeeeeeefffeffffffffffffe3322e322222222222222ee2e
+        eee222222222222332e33eeeffffffffffffffeeffeeeeeeeeeeeeeeeeeee22ee2222222222222222222222222222ee2222eee22eeeeeeeeeeeeeeefffefffffffffffffe3322e322222222222222eee
+        eee222222222222322332eefffffffffffffffefffeefeeeeeeeeeeeeeeee22ee2222222222222222222222222222ee2222eee22eeeeeeeeeeeeeeeeffeefffffffffffffe3322322222222222222eee
+        ee222222222222332333eeeffffffffffffffeefffeefeeeeeeeeeeeeeee222ee22222222222222222222222222222e2222eee22eeeeeeeeeeeeeeeeffeefffffffffffffee3223322222222222222ee
+        ee22222222222332233eeefffffffffffffffeefffeefeeeeeeeeee2eeee222ee22222222222222222222222222222e2222eee22eeeeeeeeeeeeeeeeffeeffffffffffffffee322322222222222222ee
+        e22222222222332233eeeffffffffffffffffeefffeefeeeeeeeeee2eeee22eee22222222222222222222222222222e2222eee22eeeeeeeeeeeeeeeefffefffffffffffffffe3323322222222222222e
+        e22222222222332332eefffffffffffffffffeefffeefeeeeeeeeeeeeeee22eee22222222222222222222222222222e2222eeee2eeeeeeeeeeeeeeeefffeefffffffffffffffe322322222222222222e
+        22222e22222332232eeefffffffffffffffffeefffeefeeeeeeeee2eeeee22ee222222222222222222222222222222e22222eee22eeeeeeeeeeeeeeeeffeefffffffffffffffeee23322222222e22222
+        22222e2222332232eeeffffffffffffffffffeeffeefeeeeeeeeee2eeeee22ee222222222222222222222222222222e22222eee22eeeeeeeeeeeeeeeeffeeffffffffffffffffeee2322222222e22222
+        222222222332222eeeffffffffffffffffffeefffeefeeeeeeeeee2eeee222ee222222222222222222222222222222e22222eee22eeeeeeeeeeeeeeeeffeefffffffffffffffffeee332222222222222
+        2222e222233222eeefffffffffffffffffffeefffeefeeeeeeeeee2eeee222ee222222222222222222222222222222e22222eee22eeeeeeeeeeeeeeeefffeffffffffffffffffffeee322222222e2222
+        2222e222332222eeefffffffffffffffffffeefffeefeeeeeeeeee2eeee222ee222222222222222222222222222222e22222eee22eeeeeeeeeeeeeeeefffeefffffffffffffffffeee332222222e2222
+        222e222332222eeeffffffffffffffffffffeefffeefeeeeeeeee22eeee222ee222222222222222222222222222222e22222eee22eeeeeeeeeeeeeeeefffeeffffffffffffffffffeee322222222e222
+        222e22232e22eeefffffffffffffffffffffeefffeefeeeeeeeee2eeeee22eee222222222222222222222222222222222222eee22eeeeeeeeeeeeeeeeeffeefffffffffffffffffffee332e22222e222
+        222e22222e2eeeffffffffffffffffffffffeefffefeeeeeeeeee2eeeee22ee2222222222222222222222222222222222222eee22eeeeeeeeeeeeeeeeeffeeffffffffffffffffffffee32e22222e222
+        22ee2222e2eeeffffffffffffffffffffffeeffffefeeeeeeeeee2eeee222ee2222222222222222222222222222222222222eee22eeeeeeeeeeeeeeeeefffefffffffffffffffffffffee32e2222ee22
+        22e22222e2eeeffffffffffffffffffffffeeffffefeeeeeeeee22eeee222ee2222222222222222222222222222222222222eee222eeeeeeeeeeeeeeeefffeeffffffffffffffffffffee32e22222e22
+        22e2222eeeeefffffffffffffffffffffffeefffeefeeeeeeeee22eeee222ee2222222222222222222222222222222222222eee222eeeeeeeeeeeeeeeefffeefffffffffffffffffffffeeeee2222e22
+        2ee2222eeeeffffffffffffffffffffffffeefffeefeeeeeeeee22eeee222ee2222222222222222222222222222222222222eeee22e2eeeeeeeeeeeeeefffeeffffffffffffffffffffffeeee2222ee2
+        2e2222eeeefffffffffffffffffffffffffeefffefeeeeeeeeee2eeeee222ee2222222222222222222222222222222222222eeee22eeeeeeeeeeeeeeeeeffeefffffffffffffffffffffffeeee2222e2
+        2e222eee2effffffffffffffffffffffffeeefffefeeeeeeeeee2eeee222eee222e222222222222222222222222222222222eeee22ee2eeeeeeeeeeeeeefffeeffffffffffffffffffffffe2eee222e2
+        2e222eee2effffffffffffffffffffffffeeffffefeeeeeeeee22eeee222ee2222e222222222222222222222222222222222eeee22ee2eeeeeeeeeeeeeefffeeffffffffffffffffffffffe2eee222e2
+        ee22eeee2effffffffffffffffffffffffeeffffefeeeeeeeee22eeee222ee2222e2222222222222222222222222222e22222eee22ee2eeeeeeeeeeeeeefffeeffffffffffffffffffffffe2eeee22ee
+        ee22eee22effffffffffffffffffffffffeeffffefeeeeeeeee22eeee222ee2222e2222222222222222222222222222e22222eee22ee2eeeeeeeeeeeeeefffeeffffffffffffffffffffffe22eee22ee
+        eeeeee22eeffffffffffffffffffffffffeeffffeeeeeeeeeee22eeee222ee2222e2222222222222222222222222222e22222eee22ee2eeeeeeeeeeeeeeeffeeffffffffffffffffffffffee22eeeeee
+        eeeee222efffffffffffffffffffffffffeeffffeeeeeeeeeee2eeeee222ee2222e2222222222222222222222222222e22222eee222e22eeeeeeeeeeeeeefffeeffffffffffffffffffffffe222eeeee
+        2222222eeffffffffffffffffffffffffeeefffeeeeeeeeeee22eeee2222ee2222e2222222222222222222222222222e22222eee222e22eeeeeeeeeeeeeefffeeffffffffffffffffffffffee2222222
+        222222eefffffffffffffffffffffffffeeffffeeeeeeeeeee22eeee2222e22222e2222222222222222222222222222e22222eee222ee2eeeeeeeeeeeeeefffeefffffffffffffffffffffffee222222
+        22222eeefffffffffffffffffffffffffeeffffeeeeeeeeeee22eeee222ee22222e2222222222222222222222222222e22222eeee22ee2eeeeeeeeeeeeeeeffeefffffffffffffffffffffffeee22222
+        222eeeeefffffffffffffffffffffffffeeffffeeeeeeeeeee22eeee222ee22222e2222222222222222222222222222e22222eeee22ee2eeeeeeeeeeeeeeefffeeffffffffffffffffffffffeeeee222
+        eeee2eeeeffffffffffffffffffffffffeeffffeeeeeeeeee22eeeee222ee2222ee2222222222222222222222222222e22222eeee22ee2eeeeeeeeeeeeeeefffeefffffffffffffffffffffeeee2eeee
+        222e2ee2effffffffffffffffffffffffeeffffeeeeeeeeee22eeee2222ee2222ee2222222222222222222222222222e22222eeee22ee22eeeeeeeeeeeeeefffeefffffffffffffffffffffe2ee2e222
+        222e2ee2efffffffffffffffffffffffeeeffffeeeeeeeeee22eeee2222ee2222ee2222222222222222222222222222e22222eeee22ee22eeeeeeeeeeeeeefffeefffffffffffffffffffffe2ee2e222
+        222e2ee2efffffffffffffffffffffffeefffffeeeeeeeeee22eeee2222ee2222ee2222222222222222222222222222e22222eeee222e22eeeeeeeeeeeeeeffffeeffffffffffffffffffffe2ee2e222
+        222e2ee2efffffffffffffffffffffffeefffffeeeeeeeee22eeeee2222ee2222ee2222222222222222222222222222e22222eeee222e22eeeeeeeeeeeeefffffeeffffffffffffffffffffe2ee2e222
+        222e2ee22effffffffffffffffffffffeefffffeeeeeeeee22eeee22222e22222ee2222222222222222222222222222ee2222eeee222ee2eeeeeeeeeeeeeeffffeefffffffffffffffffffe22ee2e222
+        222e2ee22effffffffffffffffffffffeeffffeeeeeeeeee22eeee22222e22222ee2222222222222222222222222222ee2222eeeee22ee2eeeeeeeeeeeeeefffffefffffffffffffffffffe22ee2e222
+        222e2eee2effffffffffffffffffffffeeffffeeeeeeeeee22eeee22222e22222ee2222222222222222222222222222ee2222eeeee22ee22eeeeeeeeeeeeefffffefffffffffffffffffffe2eee2e222
+        222e22ee2eefffffffffffffffffffffefffffeeeeeeeee222eee22222ee22222ee2222222222222222222222222222ee2222eeeee22ee22eeeeeeeeeeeeeffffffffffffffffffffffffee2ee22e222
+        222e22ee22efffffffffffffffffffffefffffeeeeeeeee22eeee22222ee22222ee2222222222222222222222222222ee2222eeeee22ee22eeeeeeeeeeeeeefffffffffffffffffffffffe22ee22e222
+        222e22ee22efffffffffffffffffffffefffffeeeeeeeee22eeee22222ee22222e22222222222222222222222222222ee2222eeeee22ee22eeeeeeeeeeeeeefffffffffffffffffffffffe22ee22e222
+        222e22ee22efffffffffffffffffffffffffffeeeeeeeee22eee222222ee22222e22222222222222222222222222222ee22222eeee222e22eeeeeeeeeeeeeefffffffffffffffffffffffe22ee22e222
+        222e22ee222effffffffffffffffffffffffffeeeeeeeee22eee222222ee22222e22222222222222222222222222222ee22222eeee222ee2eeeeeeeeeeeeeeefffffffffffffffffffffe222ee22e222
+        222e22eee22effffffffffffffffffffffffffeeeeeeee22eeee222222e222222e22222222222222222222222222222ee22222eeee222ee22eeeeeeeeeeeeeefffffffffffffffffffffe22eee22e222
+        222e222ee22effffffffffffffffffffffffffeeeeeeee22eeee222222e222222e22222222222222222222222222222ee22222eeee222ee22eeeeeeeeeeeefffffffffffffffffffffffe22ee222e222
+        222e222ee22eeffffffffffffffffffffffffeeeeeeeee22eee2222222e222222ee22222eeee222eeee222eeee22222ee222222eeee22222eeeeeeeeeeeeeffffffffffffffffffffffee22ee222e222
+        222e222ee222efffffffbffffffffbbbfffffbbeeeeebeeeeeeee222eebeeeeeeddeeeeeeedeeeeeeeeeeeedeeeeeeeddeeeeeebeee22eeeeeeeebeeeeebbfffffbbbffffffffbfffffe222ee222e222
+        222e222ee222ebbfffbbbbbfffffbbbbbbbbbbbbbbbbbbeebbbbeeeeedddeeeedddddeeeddddeeeeddeeeeddddeeedddddeeeedbbbbeeebbbbeebbbbbbbbbbbbbbbbbbfffffbbbbbfffe222ee222e222
+        222ee22ee222eebbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbee222ee22ee222
+        222ee22ee2222ebbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbe2222ee22ee222
+        2222e222e2222eebbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbee2222e222e2222
+        2222e222ee2222ebbbbbbbbbbbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbe2222ee222e2222
+        2222e222ee2222ebbbbbbbbbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbbbbbbbbe2222ee222e2222
+        2222e222ee2222eebbbbbbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbbbbbee2222ee222e2222
+        2222e2222e22e22ebbbbbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbbbbe22e22e2222e2222
+        222222222e22e22eebbbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbbee22e22e222222222
+        222222222e22e222ebbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbe222e22e222222222
+        2222222222e22e22eebbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbee22e22e2222222222
+        222222e222e22e222ebbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbe222e22e222e222222
+        222222e222222e222eebbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbee222e222222e222222
+        222222e2222222e222ebbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbe222e2222222e222222
+        222222ee222222e222eebbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbee222e222222ee222222
+        2222222e222222e2222ebbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbe2222e222222e2222222
+        22222e2e2222222e222eebbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbee222e2222222e2e22222
+        22222e2e2222222e222eebbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbee222e2222222e2e22222
+        22222e2e22222222e22ebbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbe22e22222222e2e22222
+        22222e2ee2222222e22ebbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbe22e2222222ee2e22222
+        22222e2ee2222222eeeebbbbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbbbeeee2222222ee2e22222
+        22222e22e2222222eeebbbbbbbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbbbbbbeee2222222e22e22222
+        22222ee2e2222222eebbbbbbbbbbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbbbbbbbbbee2222222e2ee22222
+        22222ee2e222222eebbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbee222222e2ee22222
+        222222e2ee22222ebbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbe22222ee2e222222
+        222222e22e2222eebbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbee2222e22e222222
+        222222e22e22eeebbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbeee22e22e222222
+        222222e2eeeeebbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbeeeee2e222222
+        222222e2ebbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbe2e222222
+        222222eeebbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbeee222222
+    `)
+    displayDialogue("The End.", 40, 60, 15, 1, 26)
+}
 function scene2_initialDialogue1 () {
     displayDialogue("Hello Jamal, today     is the day.", 25, 63, 15, 1, 19)
     displayDialogue("It's time for your    evaluation.", 25, 63, 15, 1, 19)
@@ -5184,6 +5302,7 @@ function intro_prologue1 () {
     intro_flag = 0
 }
 function initialize_scene1 () {
+    scene1_flag = 1
     old_guy = sprites.create(img`
         . . . . f f f f f f . . . . . . 
         . . . f a f b b b b f f . . . . 
@@ -5905,25 +6024,25 @@ function makeScene3 () {
         `, SpriteKind.Player)
     // Sprite: Young guy entering from left
     young_guy = sprites.create(img`
-        . . . . . . . . . . . . . . . . 
-        . . . . . f f f f f f . . . . . 
-        . . . f f e e e e f 2 f . . . . 
-        . . f f e e e e f 2 2 2 f . . . 
-        . . f e e e f f e e e e f . . . 
-        . . f f f f e e 2 2 2 2 e f . . 
-        . . f e 2 2 2 f f f f e 2 f . . 
-        . f f f f f f f e e e f f f . . 
-        . f f e 4 4 e b f 4 4 e e f . . 
-        . f e e 4 d 4 1 f d d e f . . . 
-        . . f e e e e e d d d f . . . . 
-        . . . . f 4 d d e 4 e f . . . . 
-        . . . . f e d d e 2 2 f . . . . 
-        . . . f f f e e f 5 5 f f . . . 
-        . . . f f f f f f f f f f . . . 
-        . . . . f f . . . f f f . . . . 
+        . . . . . . f f f f f f . . . . 
+        . . . . f f e e e e f 2 f . . . 
+        . . . f f e e e e f 2 2 2 f . . 
+        . . . f e e e f f e e e e f . . 
+        . . . f f f f e e 2 2 2 2 e f . 
+        . . . f e 2 2 2 f f f f e 2 f . 
+        . . f f f f f f f e e e f f f . 
+        . . f f e 4 4 e b f 4 4 e e f . 
+        . . f e e 4 d 4 1 f d d e f . . 
+        . . . f e e e 4 d d d d f . . . 
+        . . . . f f e e 4 4 4 e f . . . 
+        . . . . . 4 d d e 2 2 2 f . . . 
+        . . . . . e d d e 2 2 2 f . . . 
+        . . . . . f e e f 4 5 5 f . . . 
+        . . . . . . f f f f f f . . . . 
+        . . . . . . . f f f . . . . . . 
         `, SpriteKind.Player)
-    young_guy.setPosition(44, 92)
-    old_guy.setPosition(136, 97)
+    young_guy.setPosition(40, 92)
+    old_guy.setPosition(100, 92)
 }
 function scene2_test2_init () {
     displayDialogue("Great. Now for test 2.", 19, 63, 15, 1, 22)
@@ -6267,7 +6386,172 @@ function scene2_test2_init () {
     music.play(music.stringPlayable("C G E A F D B C ", 500), music.PlaybackMode.UntilDone)
     scene2_final_dialogue_flag = 1
 }
-controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
+function initialize_scene5 () {
+    scene.setBackgroundImage(img`
+        8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888b888886888888588888888888888b8888888888888
+        8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888b888886888888588888888888888b8888888888888
+        8888888888888888888888888888888888688888888888b88888888888888888888888888888888888888888888888888888888888888888888888b888888688888588888888888888b8888888888888
+        888888888888888888888888888888888868888888888888888888888888888888888888888888888888888888b888888888888888888888888888b888888688888588888888888888b8888888888888
+        888888888888888888888888888888888868888888888b888888888888888888888888888888888888888888888888888888888888888888888888b888888888888588888888888888b8888888888888
+        88888888888888888888888888888888886888888888b8888888888888888888888888888888888888888888888b88888888888888888888888888b888888868888588888888888888b8888888888888
+        8888888888888888888888888888888888688888888b88888888888888888888888888888888888888888888888888888888888888888888888888b888888868888588888888888888b8888888888888
+        88888888888888888888888888888888868888888888888888888888888888888888888888888888888888888888b8888888888888888888888888b888888868888588888888888888b8888888888888
+        888888888888888888888888888888888688888888b88888888888888888888888888888888888888888888888888b888888888888888888888888b888888886888588888888888888b8888888888888
+        88888888888888888888888888888888868888888b888888888888888888888888888888888888888888888888888b888888888888888888888888b888888886888588888888888888b8888888888888
+        8888888888888888888888888888888868888888b88888888888888888888888888888888888888888888888888888b88888888888888888888888b888888886888588888888888888b8888888888888
+        88888888888888888888888888888888688888bb8888888888888888888888888888888888888888888888888888888b8888888888888888888888b88888888868858888888888888858888888888888
+        8888888888888888888888888888888868888bb88888888888888888888888888888888888888888888888888888888b8888888888888888888888b888888888688588888888888888b8888888888888
+        888888888888888888888888888888886888bb8888888888888888888888888888888888888888888888888888888888b888888888888888888888b888888888688588888888888888b8888888888888
+        88888888888888888888888888888888688b888888888888888888888888888888888888888888888888888888888888bb88888888888888888888b888888888668588888888888888b8888888888888
+        8888888888888888888888888888888688b88888888888888888888888888888888888888888888888888888888888888bb8888888888888888888b88888888886858888888888888858888888888888
+        88888888888888888888888888888886bb8888888888888888888888888888888888888888888888888888888888888888b8888888888888888888b888888888868b88888888888888b8888888888888
+        88888888888888888888888888888886b888888888888888888888888888888888888888888888888888888888888886888b888888888888888888b888888888855b55888888888888b8888888888888
+        8888888888888888888888888888886b88888888888888888888888888888888888888888888888888888888888888868888b88888888888888888b88888888555b5b555888888888858888888888888
+        8888888888888888888888888888bb68888888888888888888888888888888888888888888888888888888888888888888888b888888888888888858888b88bbbb555bbbbb8b888888b8888888888888
+        888888888888888888888888888bb85b8888888888888888888888888888888888888888888888888888888888888888688888b888888888888888b88885555bbb5555bbb55588888858888888888888
+        88888888888888888888888888b8865588888888888888888888888888888888888888888888888888888888888888886888888bb8888888888888b8888b555555555555555b88888858888888888888
+        888888888888888888888888bb555555b88888888888888888888888888888888888888888888888888888888888888888888888bb888888888888b88888bbb8b86688b88bb888888858888888888888
+        88888888888888888888888bb8b55555555b888888888888888888888888888888888888888888888888888888888888868888888bb88888888888588888b5855586855585b888888858888888888888
+        888888888888888888888bb88885555555b888888888888888888888888888888888888888888888888888888888888886888888888b8888888888b88888858b5b868b5b858888888858888888888888
+        88888888888888888888b888888b55555b88888888888888888888888888888888888888888888888888888888888888886888888888bb88888888b88888858858868858858888888858888888888888
+        888888888888888888bb8888888b55555b888888888888888888888888888888888888888888888888888888888888888868888888888bb8888888588888858858866858858888888858888888888888
+        8888888888888888bb888888888555b55588888888888888888888888888888888888888888888888888888888888888886888888888888bb88888b88888858858886858858888888858888888888888
+        888888888888888bb888888888855888558888888888888888888888888888888888888888888888888888888888888888868888888888888bb888588888858858886858858888888858888888888888
+        8888888888888bb8888888888866888888888888888888888888888888888888888888888888888888888888888888888886888888888888888bb8588888858858886658858888888858888888888888
+        8888888888bbb88888888888886888888888888888888888888888888888888888888888888888888888888888888888888868888888888888888b5b8888858858886658858888888858888888888888
+        888888888b8888888888888888688888888888888888888888888888888888888888888888888888888888888888888888886688888888888888885bbb88858858888658858888888858888888888888
+        88888888bb888888888888888688888888888888888888888888888888888888888888888888888888888888888888888888868888888888888888588bbbb58858888658858888888858888888888888
+        888888bb88888888888888888688888888888888888888888888888888888888888888888888888888888888888888888888866888888888888888588888b5bb58888658858888888858888888888888
+        8888bb8888888888888888886888888888888888888888888888888888888888888888888888888888888888888888888888886888888888888888588888858b5bbb8658858888888858888888888888
+        bbbb8888888888888888888868888888888888888888888888888888888888888888888888888888888888888888888888888866888888888888885888888588588bbb5b858888888858888888888888
+        888888888888888888888886688888888888888888888888888888888888888888888888888888888888888888888888888888866888888888888858888885b858888856b5bbb8888858888888888888
+        8888888888888888888888868888888888888888888888888888888888888888888888888888888888888888888888888888888866888888888888588888855b5888885b5588bbbbb858888888888888
+        88888888888888888888888688888888888888888888888888888888888888888888888888888888888888888888888888888888668888888888885888888b55555555555b888888885bbbbbbb888888
+        88888888888888888888888688888888888888888888888888888888888888888888888888888888888888888888888888888888866888888888885888888855555555555888888888b88888bbbbbbbb
+        8888888888888888888888688888888888888888888888888888888888888888888888888888888888888888888888888888888888668888888888588888888b55bbb55b6888888855b5588888888888
+        8888888888888888888886888888888888888888888888888888888888888888888888888888888888888888888888888888888888866888888888588888888888555888688888555b5b555888888888
+        8888888888888888888868888888888888888888888888888888888888888888888888888888888888888888888888888888888888886688888888588888888888b5b88866b88bbbb555bbbbb8b88888
+        8888888888888888888668888888888888888888888888888888888888888888888888888888888888888888888888888888888888888668888888588888888888bbb888665555bbb5555bbb55588888
+        888888888888888888868888888888888888888888888888888888888888888888888888888888888888888888888888888888888888866688888858888888888855588886b555555555555555b88888
+        8888888888888888886888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888866688888588888888888b5b888866bbb8b88888b88bb888888
+        8888888888888888866888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888886668888588888888888858888886b5855588855585b888888
+        8888888888888888868888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888666888b88888888888858888886658b5b888b5b858888888
+        8888888888888888688888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888886655b55888888888858888886658858888858858888888
+        888888888888888668888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888555b5b5558888888858888888658858888858858888888
+        88888888888888668888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888b88bbbb555bbbbb8b888858888888658858888858858888888
+        888888888888886888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888885555bbb5555bbb555888858888888858858888858858888888
+        88888888888886888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888b555555555555555b888858888888856858888858858888888
+        888888888888688888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888bbb8b88886b68bb88888b8888888856658888858858888888
+        888888888886688888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888b5855588855565b88888b8888888858658888858858888888
+        888888888866888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888858b5b888b5b65688888b8888888858658888858858888888
+        88888888668888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888885885888885885666888b8888888858858888858858888888
+        8888888668888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888588588888588586666888888888858856888858858888888
+        8888886688888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888588588888588588886666888888858856688858858888888
+        888866888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888858858888858858888886666888885b858688858b58888888
+        8866888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888588588888588588888888666666855b5866885b558888888
+        66888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888885885888885885888888888886666b55555555555b8888888
+        8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888588588888588588888888888888865555555555588888888
+        8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888588588888588588888888888888888b55bbb55b888888888
+        8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888588588888588588888888888888888888555868888888888
+        8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888588588888588588888888888888888888b5b866888888888
+        8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888588588888588588888888888888888888bbb886688888888
+        88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888885b858888858b588888888888888888888555888868888888
+        888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888855b5888885b5588888888888888888888b5b888886688888
+        8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888b55555555555b88888888888888888888858888888668888
+        8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888855555555555888888888888888888888858888888866888
+        888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888b55bbb55b8888888888888888888888858888888888668
+        8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888885558888888888888888888888888858888888888866
+        888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888b5b8888888888888888888888888858888888888888
+        888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888bbb8888888888888888888888888858888888888888
+        8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888885558888888888888888888888888858888888888888
+        888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888b5b88888888888888888888888888b8888888888888
+        88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888885888888888888888888888888888b8888888888888
+        88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888885888888888888888888888888888b8888888888888
+        88888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888885888888888888888888888888888b8888888888888
+        8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888588888888888888888888888888888888888888888
+        8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888588888888888888888888888888888888888888888
+        8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888588888888888888888888888888888888888888888
+        8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888588888888888888888888888888888888888888888
+        8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888b88888888888888888888888888888888888888888
+        8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888b88888888888888888888888888888888888888888
+        8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888b88888888888888888888888888888888888888888
+        8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888b88888888888888888888888888888888888888888
+        8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888868888888888
+        8888888688888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888866888888888
+        8888886668888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888666668888888
+        8888888688888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888886666688888888
+        8888888888888888888858888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888666688888888
+        8888888888888888888555888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888666688888888
+        8888888888888888888858888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888688688888888
+        8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888
+        8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888858888888885888888
+        8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888555888888885888888
+        8888858888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888858888888855588888
+        8888555888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888855588888
+        8888858888888888888888888888888588888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888855555555588
+        8888888888888868888888888888888558888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888885555555888
+        8888888888888858888888888888885555588888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888555558888
+        8888888888885555588888888888855555888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888558558888
+        8888888888888555888888888888885555888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888588858888
+        8888888888888585888888888888888585888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888858888888888888888888888888
+        8888888888888888888888888888888588888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888858888888888888888888888888
+        8888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888555888888888888888888888888
+        8888888888888888888888858888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888555888888888888888888888888
+        8888888888888888888888858888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888555555555888888588888888888888
+        8888888888888888888888555888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888855555558888888588888888888888
+        8888888886888888888888555888888888888888888888888588888888888888888888888888888888888888888888888888888888888888888888888888888888885555588888885558888888888888
+        8888888885888888888555555555888888888888888888888588888888888888888888888888888888888888888888888888888888888888888888888888888888885585588888885558888888888888
+        8888888555558888888855555558888888888888888888885558888888888888888888888888888888888888888888888888888888888888888888888888888888885888588888855555888888888888
+        8888888855588888888885555588888888888888888888885558888888888888888888888888888888888888888888888888888888888888888888888888888888888888888855555555555888888888
+        8888888858588888888885585588888888888888888885555555558888888888888888888888888888888888888888888888888888888888888888888885888888888888888885555555558888888888
+        8888888888888858888885888588888888888888888888555555588888888888888888888888888888888888888888888888888888888888888888888855588888888888888888855555888888888888
+        8888888888888555888888888888888888888888888888855555888888888888888888888888888888888888888888888888888888888888888888888885888888888888888888555855588888888888
+        8888888888855555558888888888888888888888888888855855888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888558885588885888888
+        8888888888885555588888888888885888888888888888858885888888888888888888888888888888888888888888888888888888888888888888888888888888888888888888588888588855588888
+        `)
+    sprites.destroyAllSpritesOfKind(SpriteKind.Player)
+    old_guy = sprites.create(img`
+        . . . . f f f f f f . . . . . . 
+        . . . f a f b b b b f f . . . . 
+        . . f a a a f b b b b f f . . . 
+        . . f b b b b f f b b b f . . . 
+        . f b a a a a b b f f f f . . . 
+        . f a b f f f f a a a b f . . . 
+        . f f f b b b f f f f f f f . . 
+        . f b b b b f b b b b b f f . . 
+        . . f b d d f 1 b d b b b f . . 
+        . . . f d d d d b b b b f . . . 
+        . . . f b b b b b b f f . . . . 
+        . . . f a a a c d d c . . . . . 
+        . . . f a a a c d d c . . . . . 
+        . . . f 5 5 c f c c f . . . . . 
+        . . . . f f f f f f . . . . . . 
+        . . . . . . f f f . . . . . . . 
+        `, SpriteKind.Player)
+    // Sprite: Young guy entering from left
+    young_guy = sprites.create(img`
+        . . . . . . f f f f f f . . . . 
+        . . . . f f e e e e f 2 f . . . 
+        . . . f f e e e e f 2 2 2 f . . 
+        . . . f e e e f f e e e e f . . 
+        . . . f f f f e e 2 2 2 2 e f . 
+        . . . f e 2 2 2 f f f f e 2 f . 
+        . . f f f f f f f e e e f f f . 
+        . . f f e 4 4 e b f 4 4 e e f . 
+        . . f e e 4 d 4 1 f d d e f . . 
+        . . . f e e e 4 d d d d f . . . 
+        . . . . f f e e 4 4 4 e f . . . 
+        . . . . . 4 d d e 2 2 2 f . . . 
+        . . . . . e d d e 2 2 2 f . . . 
+        . . . . . f e e f 4 5 5 f . . . 
+        . . . . . . f f f f f f . . . . 
+        . . . . . . . f f f . . . . . . 
+        `, SpriteKind.Player)
+    young_guy.setPosition(40, 92)
+    old_guy.setPosition(100, 92)
+    scene5_dialogue()
+}
+function scene2_rightcontrol() {
     if (scene2_game_ready_flag) {
         if (arrow_list[expected_arrow_index].kind() == SpriteKind.right_arrow) {
             if (!(arrow_list[expected_arrow_index].overlapsWith(right_arrow2))) {
@@ -6444,6 +6728,8 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     if (expected_arrow_index < arrow_list.length - 1) {
         expected_arrow_index += 1
     }
+}
+function scene4_rightcontrol() {
     if (s4_round1 == 1) {
         selector.setPosition(130, 105)
     }
@@ -6453,14 +6739,90 @@ controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
     if (s4_round3 == 1) {
         selector.setPosition(130, 105)
     }
+}
+controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
+    if (scene2_flag == 1){
+        scene2_rightcontrol()
+    }
+    if (scene4_flag == 1){
+        scene4_rightcontrol()
+    }
 })
+function scene5_dialogue () {
+    displayDialogue("Yep, it was basically impossible to tell    what was real.", 35, 60, 15, 1, 21)
+    displayDialogue("So what do we do? Is Belize doomed?", 10, 70, 15, 1, 18)
+    displayDialogue("Not if your generation fights smarter than I did.", 30, 60, 15, 1, 22)
+    displayDialogue("I need you to understand.", 70, 70, 15, 1, 14)
+    displayDialogue("AI isn't evil.", 70, 70, 15, 1, 26)
+    displayDialogue("It's a very helpful     tool that has    developed society.", 30, 60, 15, 1, 20)
+    displayDialogue("But humans must   set rules.", 70, 70, 15, 1, 16)
+    displayDialogue("Protect jobs.   Protect privacy.", 70, 70, 15, 1, 16)
+    displayDialogue("Protect our culture.", 40, 70, 15, 1, 26)
+    displayDialogue("It's too late to save the past.", 50, 70, 15, 1, 26)
+    displayDialogue("But you can save the future.", 50, 70, 15, 1, 26)
+    scene5_end()
+}
 function scene2_final_dialogue2 () {
     displayDialogue("We're sorry Jamal.", 20, 73, 15, 1, 19)
     displayDialogue("But unfortunately...", 20, 73, 15, 1, 20)
     displayDialogue("The AI seems to have surpassed you.", 20, 63, 15, 1, 19)
     displayDialogue("We're going to have to let you go.", 20, 63, 15, 1, 19)
     scene2_final_dialogue_flag = 0
+    scene2_flag = 0
+    scene3_flag = 1
     scene3_start_flag = 1
+}
+function scene1_A_controls () {
+    // Only show next text if not already showing
+    if (intro_flag) {
+        intro_prologue1()
+    }
+    if (intro_flag == 0) {
+        if (intro_carlos_movement_flag_1 == 1) {
+            young_guy.vx = 30
+        }
+    }
+    // Scene 1 – first greeting
+    if (scene_1_conversation_flag == 1) {
+        scene1_dialogue()
+    }
+    // Scene 1 – "What's wrong?"
+    if (scene_1_conversation2_flag == 1) {
+        scene1_dialogue2()
+    }
+    // Scene 1 – trigger scene1_dialogue2 after movement
+    if (scene1_dialogue1_movement_flag == 1) {
+        scene_1_conversation2_flag = 1
+        scene1_dialogue1_movement_flag = 0
+    }
+    // NEW → Scene 1 emotional dialogue sequence
+    if (scene1_dialogue3_flag == 1) {
+        scene1_dialogue3()
+        scene1_dialogue3_flag = 0
+    }
+    // Grandpa sprite change logic
+    if (grandpa_dialogue_1_flag == 1) {
+        young_guy.setImage(img`
+            . . . . f f f f f f . . . . . . 
+            . . . f 2 f e e e e f f . . . . 
+            . . f 2 2 2 f e e e e f f . . . 
+            . . f e e e e f f e e e f . . . 
+            . f e 2 2 2 2 e e f f f f . . . 
+            . f 2 e f f f f 2 2 2 e f . . . 
+            . f f f e e e f f f f f f f . . 
+            . f e e 4 4 f b e 4 4 e f f . . 
+            . . f e d d f 1 4 d 4 e e f . . 
+            . . . f d d d d 4 e e e f . . . 
+            . . . f e 4 4 4 e e f f . . . . 
+            . . . f 2 2 2 e d d 4 . . . . . 
+            . . . f 2 2 2 e d d e . . . . . 
+            . . . f 5 5 4 f e e f . . . . . 
+            . . . . f f f f f f . . . . . . 
+            . . . . . . f f f . . . . . . . 
+            `)
+        grandpa_dialogue_1_flag = 0
+        scene1_dialogue1_movement_flag = 1
+    }
 }
 function initialize_scene4 () {
     sprites.destroyAllSpritesOfKind(SpriteKind.Text)
@@ -7021,6 +7383,27 @@ function initialize_scene4_final () {
 }
 function initialize_scene2 () {
     scene.setBackgroundImage(img`
+        f f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f f 
+        `)
+    sprites.destroyAllSpritesOfKind(SpriteKind.Player)
+    displayDialogue("We slowly lost the battle...", 40, 60, 2, 1, 15)
+    pause(100)
+    scene.setBackgroundImage(img`
         fccffce44bbbbbbccfcccffffffffffccccccccccccccccfcfcfccccccccccccccccccccccccccfffccccccccccccccccccccccccccfffcffcccccccccccccccccffffffffffcccfffffffceeeecfcc
         ffccffceeebbbbbccccccffffffffffccccccccccccccccffffffccccccccccddcccccccccccccfffccccccccccccbbccccccfcccccffffffcccccccccccccccccffffffffffcccfffffffceeecfccf
         cffccffceeebbbbccccccfffffffffcccccccccccccccccfffffccccfccccccbbcccccccccccccfffccccccccccccbdcccccccfccccfffffccccccccccccccccccffffffffffcccfcffffceeeffccff
@@ -7136,7 +7519,6 @@ function initialize_scene2 () {
         ccccccccccccbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbccbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbcbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbccccccccccccccccc
         cccccccccccccccccccbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbccbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbcbbbbbbbbbbbbbbbbbbbbbbbbbbbbcccccccccccccccccccccccccc
         `)
-    sprites.destroyAllSpritesOfKind(SpriteKind.Player)
     rhthym_game_boss = sprites.create(img`
         . . . . f f f f . . . . 
         . . f f e e e e f f . . 
@@ -7957,6 +8339,11 @@ function round2 () {
         round3()
     }
 }
+let scene1_flag = 0
+let scene2_flag = 0
+let scene3_flag = 0
+let scene4_flag = 0
+let scene5_flag = 0
 let checkmark: Sprite = null
 let gameover: Sprite = null
 let rhtyhm_game_opponent: Sprite = null
@@ -7965,10 +8352,13 @@ let scene4_final_scene = 0
 let sorting_game_player: Sprite = null
 let sorting_game_boss: Sprite = null
 let pressA: Sprite = null
+let scene1_dialogue1_movement_flag = 0
 let wrongmark: Sprite = null
 let go: Sprite = null
 let _set: Sprite = null
+let intro_carlos_movement_flag_1 = 0
 let old_guy: Sprite = null
+let intro_flag = 0
 let arrow_list7: Sprite[] = []
 let arrow_list6: Sprite[] = []
 let arrow_list5: Sprite[] = []
@@ -7982,6 +8372,9 @@ let gameover_flag = 0
 let pressB: Sprite = null
 let fake_card: Sprite = null
 let real_card: Sprite = null
+let scene1_dialogue3_flag = 0
+let young_guy: Sprite = null
+let scene_1_conversation2_flag = 0
 let speed = 0
 let textSprite: TextSprite = null
 let dialogueText = ""
@@ -7990,12 +8383,6 @@ let scene4_initialDialogue = 0
 let scene2_final_dialogue_flag = 0
 let rhthym_game_boss: Sprite = null
 let scene_2_initial_dialogue = 0
-let scene1_dialogue3_flag = 0
-let scene1_dialogue1_movement_flag = 0
-let scene_1_conversation2_flag = 0
-let young_guy: Sprite = null
-let intro_carlos_movement_flag_1 = 0
-let intro_flag = 0
 let scene_1_conversation_flag = 0
 let grandpa_dialogue_1_flag = 0
 let bottom_arrow2: Sprite = null
@@ -8005,7 +8392,7 @@ let ready: Sprite = null
 let scene4_inital_scene = 0
 let scene3_start_flag = 0
 let scene2_game_ready2_flag = 0
-let scene4_finalDialogue = 0
+let scene5_dialogue_flag = 0
 let s4_round3 = 0
 let s4_round2 = 0
 let selector: Sprite = null
@@ -8016,6 +8403,7 @@ let top_arrow2: Sprite = null
 let expected_arrow_index = 0
 let arrow_list: Sprite[] = []
 let scene2_game_ready_flag = 0
+let scene4_finalDialogue = 0
 initialize_scene1()
 game.onUpdate(function () {
     // Only show next text if not already showing
