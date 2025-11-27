@@ -184,6 +184,132 @@ controller.up.onEvent(ControllerButtonEvent.Pressed, function () {
         expected_arrow_index += 1
     }
 })
+function scene5_end () {
+    sprites.destroyAllSpritesOfKind(SpriteKind.Player)
+    scene.setBackgroundImage(img`
+        eeeee2222222222222222222222222222222222ee2222ee2222ee2222222eeeee2222222222222222222222222222222222ee22222eeee222ee2eeeee2222222222222222222222222222222222ee222
+        222eeeee22222222222222222222222222222eee2222eeee2222ee222222222eeeee22222222222222222222222222222eee2222eeeee222ee22222eeeee22222222222222222222222222222eee2222
+        222222eeeeeee222222222222222222222eeee22222eeeeee2222eee2222222222eeeeeee222222222222222222222eeee22222eeee2222ee222222222eeeeeee222222222222222222222eeee22222e
+        222222222eeeeeeeeeeeeee2222222eeeee222222eeee22eee2222eeee22222222222eeeeeeeeeeeeee2222222eeeee222223eeee22222eeee22222222222eeeeeeeeeeeeee2222222eeeee222222eee
+        e222222222222222222222222222eeee2222222eeee22222eef22222eeeee222222222222222222222222222eeee2333333eeee22222efe2eeeee222222222222222222222222222eeee2222222eeee2
+        eeeeeeee22222222222222222222222222222eee2222222eeeefe222222eeeeeeeee22222222222222333333333333322eee2222222efe22222eeeeeeeee22222222222222222222222222222eee2222
+        2222eeeeeeeee222222222222222222222eeee2222222eeeeeeeffe222222222eeeeeeeee222223333333333322222eeee2223322effeee222322222eeeeeeeee222222222222222222222eeee222222
+        2223322222222222222222222222222eeee2222222eeeeeeee222efffe222222222222222222222222222222222eeee2233332efffe22eeeee233333222222222222222222222222222eeee2222222ee
+        2222233332222222222222222222222222222222eeeeeeeee22222eefffe2222222222222222222222222222222233333332efffee22222eeeee2233333333333333333332222222222222222222eeee
+        eeee22233333333333333332222222222222eeeeee222222222eeeee22ffffee22222222223333333333333333333332eeffff22eeeee22222eeeeee23333333333333222222222222222222eeeeeeee
+        eeeeeeeeee233333333332222222222eeeeeee2222222222eeeee2222ffeefffffffee2222222222223333333332fffffffeeff2222eeeee222222eeeeeeee222222222222222222222eeeeeeeeeeeee
+        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee22eeeeeeee2222eee222222ffeeeeeeeeeeffffffffffffffffffffffffeeeeeeeeeeff222222eee2222eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
+        eeeeeeeeeee22222222222222ee22222222222222222222222222effeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffe22222222222222222222222222ee22222222222222eeeeeeeeeee
+        eeeeeeeeee22222222222222222eeee2222222222222222222efffeeeeeeeeeeeeeeeeee2eeeeeeeeeeeeeeeeee2eeeeeeeeeeeeeefffe2222222222222222222eeee22222222222222222eeeeeeeeee
+        eeeeeeeeee222222222222222222eeeeeeee222222222eeefffeeeeeeeeeeeeeeeeeeeee222222eeeeeeeeee2222eeeeeeeeeeeeeeeeefffeee222222222eeeeeeee222222222222222222eeeeeeeeee
+        eeeeeeeee2222222222222222222eeeeeeeeeeeeeeeeffffeeeeeeeeeeeeeeeeeeeeeeee22222222222222222222ee2eeeeeeeeeeeeeeeeeffffeeeeeeeeeeeeeeee2222222222222222222eeeeeeeee
+        eeeeeeeee2222222222222222222ee2222effffffffffffeeeeeeeeeeeeeeeeeeeeeeeee22222222222222222222ee22eeeeeeeeeeeeeeeefffffffffffffe2222ee2222222222222222222eeeeeeeee
+        eeeeeeee22e22222222222222222ee2222eeee2efffffffeeeeeeeeeeeeeeeeeeeee22ee22222222222222222222e222eeeeeeeeeeeeeeeeffffffffe2eeee2222ee22222222222222222e22eeeeeeee
+        eeeeeeee2222222222222222222ee22222ee22eeffffffeeeeeeeeeeeeeeeeeeeeee22ee22222222222222222222e222eeeeeeeeeeeeeeeeffffffffee22ee22222ee2222222222222222222eeeeeeee
+        eeeeeeee2e2222222222222222eee22222ee22efffffffeeeeeeeeeeeeeeeeeeeeee22ee22222222222222222222e222eeeeeeeeeeeeeeeefffffffffe22ee22222eee2222222222222222e2eeeeeeee
+        eeeeeee22e2222222222222222ee222222e22eefffffffeeeeeeeeeeeeeeeeeeeeee22ee22222222222222222222e222eeeeeeeeeeeeeeeefffffffffee22e222222ee2222222222222222e22eeeeeee
+        eeeeeee22e222222222222222ee222222ee22effffffffeeeeeeeeeeeeeeeeee2eee22ee22222222222222222222e222eeee2eeeeeeeeeeeefffffffffe22ee222222ee222222222222222e22eeeeeee
+        eeeeee22e2222222222222222ee222222e22eeffffffffeeeeeeeeeeeeeeeeee2eee22ee22222222222222222222e2222eee2eeeeeeeeeeeefffffffffee22e222222ee2222222222222222e22eeeeee
+        eeeeee22e222222222222222ee222222ee2eeeffffffffeeeeeeeeeeeeeeeeee2ee222e222222222222222222222e2222eee2eeeeeeeeeeeefffffffffe3e2ee222222ee222222222222222e22eeeeee
+        eeeee22ee222222222222222ee22222ee22eefffffffffeeeeeeeeeeeeeeeeee2ee222e2222222222222222222222e222eee2eeeeeeeeeeeeffffffffffe322ee22222ee222222222222222ee22eeeee
+        eeeee22e222222222222222ee222222ee2eeeffffffffeeeeeeeeeeeeeeeeee22ee222e2222222222222222222222e222eee2eeeeeeeeeeeeffffffffffe3e2ee222222ee222222222222222e22eeeee
+        eeee22ee222222222222222e222222ee22eefffffffffeeeeeeeeeeeeeeeeee22ee222e2222222222222222222222e222eee22eeeeeeeeeeeeffffffffffe322ee222222e222222222222222ee22eeee
+        eeee22ee22e22222222222ee22222ee22eeffffffffffeeeeeeeeeeeeeeeeee22ee222e2222222222222222222222e222eeee2eeeeeeeeeeeefffffffffff3322ee22222ee22222222222e22ee22eeee
+        eeee2ee222222222222222e222222ee32eeffffffffffeeeeeeeeeeeeeeeeee22ee222e2222222222222222222222e2222eee2eeeeeeeeeeeefffffffffffe332ee222222e222222222222222ee2eeee
+        eee22ee22e22222222222e222222ee32eeffffffeffffeeeeeeeeeeeeeeeeee22ee222e2222222222222222222222e2222eee2eeeeeeeeeeeeffffffffffff3322ee222222e22222222222e22ee22eee
+        eee2ee222e22222222222e22222ee23eeeffffffeffffeeeeeeeeeeeeeeeeee22ee222e2222222222222222222222e2222eee2eeeeeeeeeeeeffffffffffffe3322ee22222e22222222222e222ee2eee
+        ee22ee22e22222222222e222222ee32eefffffffefffeeeeeeeeeeeeeeeeeee22ee222e2222222222222222222222e2222eee2eeeeeeeeeeeeeffffffffffffe332ee222222e22222222222e22ee22ee
+        ee2eee2ee2222222222e222222ee33eeefffffffefffeefeeeeeeeeeeeeeee222ee22ee2222222222222222222222e2222eee22eeeeeeeeeeeeffffffffffffe3322ee222222e2222222222ee2eee2ee
+        eeeee22ee2222222222e22222ee33eeeffffffffffffeefeeeeeeeeeeeeeee22eee22ee2222222222222222222222e2222eee22eeeeeeeeeeeefffffffffffffe3322ee22222e2222222222ee22eeeee
+        eeeee2ee2222222222222222eee33eeffffffffeffffeefeeeeeeeeeeeeeee22eee22ee2222222222222222222222e2222eee22eeeeeeeeeeeefeffffffffffffe332eee2222222222222222ee2eeeee
+        eeee22ee2222222222222222ee33eeeffffffffeffffeefeeeeeeeeeeeeeee22ee222ee2222222222222222222222e2222eee22eeeeeeeeeeeefeffffefffffffe3332ee2222222222222222ee22eeee
+        eeee2ee2222222222222222ee33eeefffffffffeffffeefeeeeeeeeeeeeeee22ee222e22222222222222222222222e2222eee22eeeeeeeeeeeeeeffffeffffffffe3322ee2222222222222222ee2eeee
+        eeee2ee222222222222222ee333eeffffffffffefffeeeeeeeeeeeeeeeeeee22ee222e22222222222222222222222e2222eee22eeeeeeeeeeeeeeefffefffffffffe3322ee222222222222222ee2eeee
+        eee2ee2222222222222222ee33eeeffffffffffefffeeeeeeeeeeeeeeeeeee22ee222e22222222222222222222222e22222ee22eeeeeeeeeeeeeeefffefffffffffee332ee2222222222222222ee2eee
+        eee2ee222222222222222ee33eeefffffffffffefffeefeeeeeeeeeeeeeeee22ee222e22222222222222222222222ee2222eee2eeeeeeeeeeeeeeefffeffffffffffe3332ee222222222222222ee2eee
+        ee2ee2222222222222222e33eeefffffffffffeefffeefeeeeeeeeeeeeeee222ee222e22222222222222222222222ee2222eee22eeeeeeeeeeeeeeffffeffffffffffe3322e2322222222222222ee2ee
+        ee2ee222222222222232e333eeffffffffffffeefffeefeeeeeeeeeeeeeee22eee222e22222222222222222222222ee2222eee22eeeeeeeeeeeeeeefffefffffffffffe3322e322222222222222ee2ee
+        e2ee2222222222222322e33eeeffffffffffffeefffeefeeeeeeeeeeeeeee22ee2222e22222222222222222222222ee2222eee22eeeeeeeeeeeeeeefffefffffffffffee332e2322222222222222ee2e
+        e2ee222222222222332e33eeefffffffffffffeefffeefeeeeeeeeeeeeeee22ee2222e22222222222222222222222ee2222eee22eeeeeeeeeeeeeeefffeffffffffffffe3322e322222222222222ee2e
+        eee222222222222332e33eeeffffffffffffffeeffeeeeeeeeeeeeeeeeeee22ee2222222222222222222222222222ee2222eee22eeeeeeeeeeeeeeefffefffffffffffffe3322e322222222222222eee
+        eee222222222222322332eefffffffffffffffefffeefeeeeeeeeeeeeeeee22ee2222222222222222222222222222ee2222eee22eeeeeeeeeeeeeeeeffeefffffffffffffe3322322222222222222eee
+        ee222222222222332333eeeffffffffffffffeefffeefeeeeeeeeeeeeeee222ee22222222222222222222222222222e2222eee22eeeeeeeeeeeeeeeeffeefffffffffffffee3223322222222222222ee
+        ee22222222222332233eeefffffffffffffffeefffeefeeeeeeeeee2eeee222ee22222222222222222222222222222e2222eee22eeeeeeeeeeeeeeeeffeeffffffffffffffee322322222222222222ee
+        e22222222222332233eeeffffffffffffffffeefffeefeeeeeeeeee2eeee22eee22222222222222222222222222222e2222eee22eeeeeeeeeeeeeeeefffefffffffffffffffe3323322222222222222e
+        e22222222222332332eefffffffffffffffffeefffeefeeeeeeeeeeeeeee22eee22222222222222222222222222222e2222eeee2eeeeeeeeeeeeeeeefffeefffffffffffffffe322322222222222222e
+        22222e22222332232eeefffffffffffffffffeefffeefeeeeeeeee2eeeee22ee222222222222222222222222222222e22222eee22eeeeeeeeeeeeeeeeffeefffffffffffffffeee23322222222e22222
+        22222e2222332232eeeffffffffffffffffffeeffeefeeeeeeeeee2eeeee22ee222222222222222222222222222222e22222eee22eeeeeeeeeeeeeeeeffeeffffffffffffffffeee2322222222e22222
+        222222222332222eeeffffffffffffffffffeefffeefeeeeeeeeee2eeee222ee222222222222222222222222222222e22222eee22eeeeeeeeeeeeeeeeffeefffffffffffffffffeee332222222222222
+        2222e222233222eeefffffffffffffffffffeefffeefeeeeeeeeee2eeee222ee222222222222222222222222222222e22222eee22eeeeeeeeeeeeeeeefffeffffffffffffffffffeee322222222e2222
+        2222e222332222eeefffffffffffffffffffeefffeefeeeeeeeeee2eeee222ee222222222222222222222222222222e22222eee22eeeeeeeeeeeeeeeefffeefffffffffffffffffeee332222222e2222
+        222e222332222eeeffffffffffffffffffffeefffeefeeeeeeeee22eeee222ee222222222222222222222222222222e22222eee22eeeeeeeeeeeeeeeefffeeffffffffffffffffffeee322222222e222
+        222e22232e22eeefffffffffffffffffffffeefffeefeeeeeeeee2eeeee22eee222222222222222222222222222222222222eee22eeeeeeeeeeeeeeeeeffeefffffffffffffffffffee332e22222e222
+        222e22222e2eeeffffffffffffffffffffffeefffefeeeeeeeeee2eeeee22ee2222222222222222222222222222222222222eee22eeeeeeeeeeeeeeeeeffeeffffffffffffffffffffee32e22222e222
+        22ee2222e2eeeffffffffffffffffffffffeeffffefeeeeeeeeee2eeee222ee2222222222222222222222222222222222222eee22eeeeeeeeeeeeeeeeefffefffffffffffffffffffffee32e2222ee22
+        22e22222e2eeeffffffffffffffffffffffeeffffefeeeeeeeee22eeee222ee2222222222222222222222222222222222222eee222eeeeeeeeeeeeeeeefffeeffffffffffffffffffffee32e22222e22
+        22e2222eeeeefffffffffffffffffffffffeefffeefeeeeeeeee22eeee222ee2222222222222222222222222222222222222eee222eeeeeeeeeeeeeeeefffeefffffffffffffffffffffeeeee2222e22
+        2ee2222eeeeffffffffffffffffffffffffeefffeefeeeeeeeee22eeee222ee2222222222222222222222222222222222222eeee22e2eeeeeeeeeeeeeefffeeffffffffffffffffffffffeeee2222ee2
+        2e2222eeeefffffffffffffffffffffffffeefffefeeeeeeeeee2eeeee222ee2222222222222222222222222222222222222eeee22eeeeeeeeeeeeeeeeeffeefffffffffffffffffffffffeeee2222e2
+        2e222eee2effffffffffffffffffffffffeeefffefeeeeeeeeee2eeee222eee222e222222222222222222222222222222222eeee22ee2eeeeeeeeeeeeeefffeeffffffffffffffffffffffe2eee222e2
+        2e222eee2effffffffffffffffffffffffeeffffefeeeeeeeee22eeee222ee2222e222222222222222222222222222222222eeee22ee2eeeeeeeeeeeeeefffeeffffffffffffffffffffffe2eee222e2
+        ee22eeee2effffffffffffffffffffffffeeffffefeeeeeeeee22eeee222ee2222e2222222222222222222222222222e22222eee22ee2eeeeeeeeeeeeeefffeeffffffffffffffffffffffe2eeee22ee
+        ee22eee22effffffffffffffffffffffffeeffffefeeeeeeeee22eeee222ee2222e2222222222222222222222222222e22222eee22ee2eeeeeeeeeeeeeefffeeffffffffffffffffffffffe22eee22ee
+        eeeeee22eeffffffffffffffffffffffffeeffffeeeeeeeeeee22eeee222ee2222e2222222222222222222222222222e22222eee22ee2eeeeeeeeeeeeeeeffeeffffffffffffffffffffffee22eeeeee
+        eeeee222efffffffffffffffffffffffffeeffffeeeeeeeeeee2eeeee222ee2222e2222222222222222222222222222e22222eee222e22eeeeeeeeeeeeeefffeeffffffffffffffffffffffe222eeeee
+        2222222eeffffffffffffffffffffffffeeefffeeeeeeeeeee22eeee2222ee2222e2222222222222222222222222222e22222eee222e22eeeeeeeeeeeeeefffeeffffffffffffffffffffffee2222222
+        222222eefffffffffffffffffffffffffeeffffeeeeeeeeeee22eeee2222e22222e2222222222222222222222222222e22222eee222ee2eeeeeeeeeeeeeefffeefffffffffffffffffffffffee222222
+        22222eeefffffffffffffffffffffffffeeffffeeeeeeeeeee22eeee222ee22222e2222222222222222222222222222e22222eeee22ee2eeeeeeeeeeeeeeeffeefffffffffffffffffffffffeee22222
+        222eeeeefffffffffffffffffffffffffeeffffeeeeeeeeeee22eeee222ee22222e2222222222222222222222222222e22222eeee22ee2eeeeeeeeeeeeeeefffeeffffffffffffffffffffffeeeee222
+        eeee2eeeeffffffffffffffffffffffffeeffffeeeeeeeeee22eeeee222ee2222ee2222222222222222222222222222e22222eeee22ee2eeeeeeeeeeeeeeefffeefffffffffffffffffffffeeee2eeee
+        222e2ee2effffffffffffffffffffffffeeffffeeeeeeeeee22eeee2222ee2222ee2222222222222222222222222222e22222eeee22ee22eeeeeeeeeeeeeefffeefffffffffffffffffffffe2ee2e222
+        222e2ee2efffffffffffffffffffffffeeeffffeeeeeeeeee22eeee2222ee2222ee2222222222222222222222222222e22222eeee22ee22eeeeeeeeeeeeeefffeefffffffffffffffffffffe2ee2e222
+        222e2ee2efffffffffffffffffffffffeefffffeeeeeeeeee22eeee2222ee2222ee2222222222222222222222222222e22222eeee222e22eeeeeeeeeeeeeeffffeeffffffffffffffffffffe2ee2e222
+        222e2ee2efffffffffffffffffffffffeefffffeeeeeeeee22eeeee2222ee2222ee2222222222222222222222222222e22222eeee222e22eeeeeeeeeeeeefffffeeffffffffffffffffffffe2ee2e222
+        222e2ee22effffffffffffffffffffffeefffffeeeeeeeee22eeee22222e22222ee2222222222222222222222222222ee2222eeee222ee2eeeeeeeeeeeeeeffffeefffffffffffffffffffe22ee2e222
+        222e2ee22effffffffffffffffffffffeeffffeeeeeeeeee22eeee22222e22222ee2222222222222222222222222222ee2222eeeee22ee2eeeeeeeeeeeeeefffffefffffffffffffffffffe22ee2e222
+        222e2eee2effffffffffffffffffffffeeffffeeeeeeeeee22eeee22222e22222ee2222222222222222222222222222ee2222eeeee22ee22eeeeeeeeeeeeefffffefffffffffffffffffffe2eee2e222
+        222e22ee2eefffffffffffffffffffffefffffeeeeeeeee222eee22222ee22222ee2222222222222222222222222222ee2222eeeee22ee22eeeeeeeeeeeeeffffffffffffffffffffffffee2ee22e222
+        222e22ee22efffffffffffffffffffffefffffeeeeeeeee22eeee22222ee22222ee2222222222222222222222222222ee2222eeeee22ee22eeeeeeeeeeeeeefffffffffffffffffffffffe22ee22e222
+        222e22ee22efffffffffffffffffffffefffffeeeeeeeee22eeee22222ee22222e22222222222222222222222222222ee2222eeeee22ee22eeeeeeeeeeeeeefffffffffffffffffffffffe22ee22e222
+        222e22ee22efffffffffffffffffffffffffffeeeeeeeee22eee222222ee22222e22222222222222222222222222222ee22222eeee222e22eeeeeeeeeeeeeefffffffffffffffffffffffe22ee22e222
+        222e22ee222effffffffffffffffffffffffffeeeeeeeee22eee222222ee22222e22222222222222222222222222222ee22222eeee222ee2eeeeeeeeeeeeeeefffffffffffffffffffffe222ee22e222
+        222e22eee22effffffffffffffffffffffffffeeeeeeee22eeee222222e222222e22222222222222222222222222222ee22222eeee222ee22eeeeeeeeeeeeeefffffffffffffffffffffe22eee22e222
+        222e222ee22effffffffffffffffffffffffffeeeeeeee22eeee222222e222222e22222222222222222222222222222ee22222eeee222ee22eeeeeeeeeeeefffffffffffffffffffffffe22ee222e222
+        222e222ee22eeffffffffffffffffffffffffeeeeeeeee22eee2222222e222222ee22222eeee222eeee222eeee22222ee222222eeee22222eeeeeeeeeeeeeffffffffffffffffffffffee22ee222e222
+        222e222ee222efffffffbffffffffbbbfffffbbeeeeebeeeeeeee222eebeeeeeeddeeeeeeedeeeeeeeeeeeedeeeeeeeddeeeeeebeee22eeeeeeeebeeeeebbfffffbbbffffffffbfffffe222ee222e222
+        222e222ee222ebbfffbbbbbfffffbbbbbbbbbbbbbbbbbbeebbbbeeeeedddeeeedddddeeeddddeeeeddeeeeddddeeedddddeeeedbbbbeeebbbbeebbbbbbbbbbbbbbbbbbfffffbbbbbfffe222ee222e222
+        222ee22ee222eebbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbee222ee22ee222
+        222ee22ee2222ebbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbe2222ee22ee222
+        2222e222e2222eebbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbee2222e222e2222
+        2222e222ee2222ebbbbbbbbbbbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbe2222ee222e2222
+        2222e222ee2222ebbbbbbbbbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbbbbbbbbe2222ee222e2222
+        2222e222ee2222eebbbbbbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbbbbbee2222ee222e2222
+        2222e2222e22e22ebbbbbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbbbbe22e22e2222e2222
+        222222222e22e22eebbbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbbee22e22e222222222
+        222222222e22e222ebbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbe222e22e222222222
+        2222222222e22e22eebbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbee22e22e2222222222
+        222222e222e22e222ebbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbe222e22e222e222222
+        222222e222222e222eebbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbee222e222222e222222
+        222222e2222222e222ebbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbe222e2222222e222222
+        222222ee222222e222eebbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbee222e222222ee222222
+        2222222e222222e2222ebbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbe2222e222222e2222222
+        22222e2e2222222e222eebbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbee222e2222222e2e22222
+        22222e2e2222222e222eebbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbee222e2222222e2e22222
+        22222e2e22222222e22ebbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbe22e22222222e2e22222
+        22222e2ee2222222e22ebbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbe22e2222222ee2e22222
+        22222e2ee2222222eeeebbbbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbbbeeee2222222ee2e22222
+        22222e22e2222222eeebbbbbbbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbbbbbbeee2222222e22e22222
+        22222ee2e2222222eebbbbbbbbbbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbbbbbbbbbee2222222e2ee22222
+        22222ee2e222222eebbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbee222222e2ee22222
+        222222e2ee22222ebbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbe22222ee2e222222
+        222222e22e2222eebbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbee2222e22e222222
+        222222e22e22eeebbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbeee22e22e222222
+        222222e2eeeeebbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbeeeee2e222222
+        222222e2ebbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbe2e222222
+        222222eeebbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbeee222222
+        `)
+    displayDialogue("The End.", 60, 60, 15, 1, 8)
+}
 function scene1_dialogue3 () {
     displayDialogue("Hey, wait! Tell me whats wrong.", 70, 69, 15, 1, 16)
     displayDialogue("Well I don't have much to look forward to.", 5, 64, 15, 1, 22)
@@ -210,6 +336,11 @@ function scene1_dialogue3 () {
     scene_2_state = 1
     scene1_flag = 0
     scene2_flag = 1
+}
+function scene5_A_controls () {
+    if (scene5_dialogue_flag == 1) {
+        initialize_scene5()
+    }
 }
 controller.B.onEvent(ControllerButtonEvent.Pressed, function () {
     if (s4_round1 == 1) {
@@ -245,19 +376,204 @@ function s4_finalDialogue () {
 }
 function scene3_dialogue () {
     scene2_game_ready2_flag = 0
-    displayDialogue("Grandpa: That is how it started!", 10, 60, 15, 1, 24)
-    displayDialogue("One human replaced, then a second, then a third, until they were all replaced.", 10, 50, 15, 1, 22)
-    displayDialogue(" And without jobs, crime exploded.", 10, 60, 15, 1, 15)
-    displayDialogue("The government then rolled out an AI-powered digital ID that tracked everyone. ", 5, 50, 15, 1, 26)
-    displayDialogue("People protested and fought back, but not enough people cared. ", 5, 50, 15, 1, 21)
-    displayDialogue("The government then started using    ", 5, 40, 15, 1, 20)
-    displayDialogue("AI-generated deepfakes to silence leaders,  spread false information, and the few who   were still fighting became demonized by the public. ", 5, 25, 15, 1, 22)
-    displayDialogue("Privacy died, trust died, and Belize wasn't Belize anymore. ", 5, 50, 15, 1, 21)
+    displayDialogue("That is how it   started!", 75, 65, 15, 1, 14)
+    displayDialogue("One human  replaced...", 75, 65, 15, 1, 11)
+    displayDialogue("Then a second!Then a third!", 75, 65, 15, 1, 14)
+    displayDialogue("Until we were  all replaced...", 70, 65, 15, 1, 15)
+    displayDialogue("And without jobs, crime exploded!", 60, 65, 15, 1, 17)
+    displayDialogue("The government then   started tracking        everyone", 45, 55, 15, 1, 20)
+    displayDialogue("with an AI-powered   digital ID.", 50, 65, 15, 1, 18)
+    displayDialogue("People protested and fought back,", 60, 65, 15, 1, 17)
+    displayDialogue("but not enough people cared...", 60, 65, 15, 1, 15)
+    displayDialogue("The government    then started using", 50, 65, 15, 1, 18)
+    displayDialogue("deepfakes to    silence leaders,", 60, 65, 15, 1, 16)
+    displayDialogue("and spread false information.", 60, 65, 15, 1, 16)
+    displayDialogue("The few who were still fighting", 60, 65, 15, 1, 16)
+    displayDialogue("became demonized by the public.", 60, 65, 15, 1, 16)
+    displayDialogue("Privacy died,  trust died, and", 65, 65, 15, 1, 15)
     scene3_start_flag = 0
     sprites.destroyAllSpritesOfKind(SpriteKind.Player)
     scene4_inital_scene = 1
     scene3_flag = 0
     scene4_flag = 1
+}
+function scene2_rightcontrol () {
+    if (scene2_game_ready_flag) {
+        if (arrow_list[expected_arrow_index].kind() == SpriteKind.right_arrow) {
+            if (!(arrow_list[expected_arrow_index].overlapsWith(right_arrow2))) {
+                arrow_list[expected_arrow_index].setImage(img`
+                    ....................
+                    .......b............
+                    .......22...........
+                    .......2226.........
+                    .......22222b.......
+                    .......2222222......
+                    .......22222222.....
+                    .222222222222222....
+                    .22222222222222222..
+                    .222222222222222222.
+                    .22222222222222222..
+                    .222222222222222....
+                    .22222222222222.....
+                    .......2222222......
+                    .......222222.......
+                    .......22222........
+                    .......2226.........
+                    .......26...........
+                    .......2............
+                    ....................
+                    `)
+                miss = sprites.create(img`
+                    .............................................
+                    .............................................
+                    .............................................
+                    .............................................
+                    .666..6666..6666...666666...666666......ee...
+                    .ffcfffccf.ffccf..fcccccff.efcccccfc.fffccf..
+                    efbdecbdbf.fcd4f.fcdddddbfcfcdddddef.fcd5bf..
+                    efb44444bf6fc44f6fe44ee44ffc444e44ef.fb444fc.
+                    cf4444444fcfe44ffc444cfffcfe44effcfcef444efc.
+                    cc4444444fcfe44fffce44ecffffe444ecfcec444ff..
+                    fc4ecef4efcfe4effffffe44efffffe444effc44cf...
+                    fc4efff4ef6fe4efffeee444effcee4444effceef....
+                    fc4efffeef6fe2efefe22eeeffffe22eeffcfe2cc....
+                    ffffffffffcfffff.effffccc..fffffccc.ffff.....
+                    .............................................
+                    .............................................
+                    .............................................
+                    .............................................
+                    `, SpriteKind.Text)
+                miss.setPosition(50, 90)
+                miss.setVelocity(0, -10)
+                sprites.destroy(miss, effects.fountain, 700)
+            }
+            if (arrow_list[expected_arrow_index].overlapsWith(right_arrow2)) {
+                arrow_list[expected_arrow_index].setImage(img`
+                    ....................
+                    .......b............
+                    .......55...........
+                    .......5556.........
+                    .......55555b.......
+                    .......5555555......
+                    .......55555555.....
+                    .555555555555555....
+                    .55555555555555555..
+                    .555555555555555555.
+                    .55555555555555555..
+                    .555555555555555....
+                    .55555555555555.....
+                    .......5555555......
+                    .......555555.......
+                    .......55555........
+                    .......5556.........
+                    .......56...........
+                    .......5............
+                    ....................
+                    `)
+            }
+        } else {
+            miss = sprites.create(img`
+                .............................................
+                .............................................
+                .............................................
+                .............................................
+                .666..6666..6666...666666...666666......ee...
+                .ffcfffccf.ffccf..fcccccff.efcccccfc.fffccf..
+                efbdecbdbf.fcd4f.fcdddddbfcfcdddddef.fcd5bf..
+                efb44444bf6fc44f6fe44ee44ffc444e44ef.fb444fc.
+                cf4444444fcfe44ffc444cfffcfe44effcfcef444efc.
+                cc4444444fcfe44fffce44ecffffe444ecfcec444ff..
+                fc4ecef4efcfe4effffffe44efffffe444effc44cf...
+                fc4efff4ef6fe4efffeee444effcee4444effceef....
+                fc4efffeef6fe2efefe22eeeffffe22eeffcfe2cc....
+                ffffffffffcfffff.effffccc..fffffccc.ffff.....
+                .............................................
+                .............................................
+                .............................................
+                .............................................
+                `, SpriteKind.Text)
+            if (arrow_list[expected_arrow_index].kind() == SpriteKind.left_arrow) {
+                miss.setPosition(30, 90)
+                arrow_list[expected_arrow_index].setImage(img`
+                    ....................
+                    ............22......
+                    ...........222......
+                    ..........2222......
+                    ........222222......
+                    ......d2222222......
+                    .....22222222222222.
+                    ...2222222222222222.
+                    .222222222222222222.
+                    .222222222222222222.
+                    .222222222222222222.
+                    ..22222222222222222.
+                    ...2222222222222222.
+                    .....22222222222222.
+                    .......2222222......
+                    ........222222......
+                    .........22222......
+                    ............22......
+                    .............2......
+                    ....................
+                    `)
+            }
+            if (arrow_list[expected_arrow_index].kind() == SpriteKind.top_arrow) {
+                miss.setPosition(50, 90)
+                arrow_list[expected_arrow_index].setImage(img`
+                    ....................
+                    .........2..........
+                    ........222.........
+                    .......22222........
+                    ......2222222.......
+                    ......22222229......
+                    .....222222222......
+                    ....92222222222.....
+                    ....222222222229....
+                    ...2222222222222....
+                    ..222222222222229...
+                    ..2222222222222222..
+                    .22222222222222222f.
+                    ......d222222.......
+                    ......d222222.......
+                    ......d222222.......
+                    ......d222222.......
+                    ......d222222.......
+                    ......d222222.......
+                    ....................
+                    `)
+            }
+            if (arrow_list[expected_arrow_index].kind() == SpriteKind.bottom_arrow) {
+                arrow_list[expected_arrow_index].setImage(img`
+                    ....................
+                    .......2222222......
+                    .......2222222......
+                    .......2222222......
+                    .......2222222......
+                    .......2222222......
+                    .......2222222......
+                    ..22222222222222222.
+                    ..22222222222222222.
+                    ...222222222222222..
+                    ...222222222222222..
+                    ....2222222222222...
+                    .....22222222222....
+                    ......222222222.....
+                    .......2222222......
+                    ........22222.......
+                    .........222........
+                    .........222........
+                    ..........2.........
+                    ....................
+                    `)
+                miss.setPosition(70, 90)
+            }
+            miss.setVelocity(0, -10)
+            sprites.destroy(miss, effects.fountain, 700)
+        }
+    }
+    if (expected_arrow_index < arrow_list.length - 1) {
+        expected_arrow_index += 1
+    }
 }
 function scene2_game_ready () {
     music.play(music.stringPlayable("- - D - D - E - ", 120), music.PlaybackMode.InBackground)
@@ -591,79 +907,9 @@ function scene1_dialogue () {
     grandpa_dialogue_1_flag = 1
     scene_1_conversation_flag = 0
 }
-function scene2_A_controls() {
-    if (scene_2_state == 1) {
-        initialize_scene2()
-    }
-    if (scene_2_initial_dialogue == 1) {
-        sprites.destroy(rhthym_game_boss)
-        rhthym_game_boss = sprites.create(img`
-            . . . . f f f f . . . . 
-            . . f f e e e e f f . . 
-            . f f e e e e e e f f . 
-            f f f f 4 e e e f f f f 
-            f f f 4 4 4 e e f f f f 
-            f f f 4 4 4 4 e e f f f 
-            f 4 e 4 4 4 4 4 4 e 4 f 
-            f 4 4 f f 4 4 f f 4 4 f 
-            f e 4 d d d d d d 4 e f 
-            . f e d d b b d d e f . 
-            . f f e 4 4 4 4 e f f . 
-            e 4 f b 1 1 1 1 b f 4 e 
-            4 d f 1 1 1 1 1 1 f d 4 
-            4 4 f 6 6 6 6 6 6 f 4 4 
-            . . . f f f f f f . . . 
-            . . . f f . . f f . . . 
-            `, SpriteKind.Player)
-        rhthym_game_boss.setPosition(75, 86)
-        scene2_initialDialogue1()
-    }
-    if (scene2_game_ready_flag) {
-        scene2_game_ready_flag = 0
-        scene2_game_ready2_flag = 1
-        scene2_test2_init()
-    }
-    if (scene2_final_dialogue_flag) {
-        scene2_final_dialogue2()
-    }
-}
-function scene3_A_controls () {
-    if (scene3_start_flag) {
-        makeScene3()
-        scene3_start_flag = 0
-        if (scene3_start_flag == 0) {
-            scene3_dialogue()
-        }
-    }
-}
-function scene4_A_controls() {
-    if (scene4_inital_scene) {
-        initialize_scene4()
-    }
-    if (scene4_initialDialogue == 1) {
-        s4_initialDialogue()
-    }
-    if (scene4_game_ready_flag == 1) {
-        scene4_game_ready()
-    }
-    if (s4_round1 == 1) {
-        round1()
-    }
-    if (scene4_finalDialogue == 1) {
-        s4_finalDialogue()
-        scene5_dialogue_flag = 1
-        scene4_flag = 0
-        scene5_flag = 1
-    }
-}
-function scene5_A_controls () {
-    if (scene5_dialogue_flag == 1) {
-        initialize_scene5()
-    }
-}
 controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (scene1_flag == 1) {
-    	scene1_A_controls()
+        scene1_A_controls()
     }
     if (scene2_flag == 1) {
         scene2_A_controls()
@@ -671,11 +917,9 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
     if (scene3_flag == 1) {
         scene3_A_controls()
     }
-    
     if (scene4_flag == 1) {
         scene4_A_controls()
     }
-
     if (scene5_flag == 1) {
         scene5_A_controls()
     }
@@ -690,7 +934,7 @@ function displayDialogue (text: string, X: number, Y: number, colorText: number,
     music.play(music.stringPlayable("A3 - G3 - - F3 - A3", 500), music.PlaybackMode.InBackground)
     for (let index = 0; index <= text.length - 1; index++) {
         dialogueText = "" + dialogueText + text.charAt(index)
-            speed = 10
+        speed = 10
         pause(speed)
         textSprite.setText(dialogueText)
     }
@@ -708,6 +952,17 @@ function scene1_dialogue2 () {
     pause(1000)
     young_guy.vx = 0
     scene1_dialogue3_flag = 1
+}
+function scene4_rightcontrol () {
+    if (s4_round1 == 1) {
+        selector.setPosition(130, 105)
+    }
+    if (s4_round2 == 1) {
+        selector.setPosition(130, 105)
+    }
+    if (s4_round3 == 1) {
+        selector.setPosition(130, 105)
+    }
 }
 function round1 () {
     s4_round1 = 1
@@ -1571,195 +1826,6 @@ function test1 () {
         arrow_y += -33
         arrow_list[arrow_index2].setPosition(arrow_x[arrow_index2], arrow_y)
         arrow_list[arrow_index2].setVelocity(0, 67)
-    }
-}
-function scene2_leftcontrol() {
-    if (scene2_game_ready_flag || scene2_game_ready2_flag) {
-        if (arrow_list[expected_arrow_index].kind() == SpriteKind.left_arrow) {
-            if (!(arrow_list[expected_arrow_index].overlapsWith(left_arrow2))) {
-                arrow_list[expected_arrow_index].setImage(img`
-                    ....................
-                    ............22......
-                    ...........222......
-                    ..........2222......
-                    ........222222......
-                    ......d2222222......
-                    .....22222222222222.
-                    ...2222222222222222.
-                    .222222222222222222.
-                    .222222222222222222.
-                    .222222222222222222.
-                    ..22222222222222222.
-                    ...2222222222222222.
-                    .....22222222222222.
-                    .......2222222......
-                    ........222222......
-                    .........22222......
-                    ............22......
-                    .............2......
-                    ....................
-                    `)
-                miss = sprites.create(img`
-                    .............................................
-                    .............................................
-                    .............................................
-                    .............................................
-                    .666..6666..6666...666666...666666......ee...
-                    .ffcfffccf.ffccf..fcccccff.efcccccfc.fffccf..
-                    efbdecbdbf.fcd4f.fcdddddbfcfcdddddef.fcd5bf..
-                    efb44444bf6fc44f6fe44ee44ffc444e44ef.fb444fc.
-                    cf4444444fcfe44ffc444cfffcfe44effcfcef444efc.
-                    cc4444444fcfe44fffce44ecffffe444ecfcec444ff..
-                    fc4ecef4efcfe4effffffe44efffffe444effc44cf...
-                    fc4efff4ef6fe4efffeee444effcee4444effceef....
-                    fc4efffeef6fe2efefe22eeeffffe22eeffcfe2cc....
-                    ffffffffffcfffff.effffccc..fffffccc.ffff.....
-                    .............................................
-                    .............................................
-                    .............................................
-                    .............................................
-                    `, SpriteKind.Text)
-                miss.setPosition(25, 90)
-                miss.setVelocity(0, -10)
-                sprites.destroy(miss, effects.fountain, 700)
-            }
-            if (arrow_list[expected_arrow_index].overlapsWith(left_arrow2)) {
-                arrow_list[expected_arrow_index].setImage(img`
-                    ....................
-                    .............f......
-                    ...........df5......
-                    ..........f555......
-                    ........655555......
-                    ......df555555......
-                    .....f5555555555555.
-                    ...6555555555555555.
-                    ..f5555555555555555.
-                    .f55555555555555555.
-                    .555555555555555555.
-                    ..55555555555555555.
-                    ...d555555555555555.
-                    .....6555555555bbb5.
-                    .......5555555......
-                    ........d55555......
-                    ..........c555......
-                    ............55......
-                    .............b......
-                    ....................
-                    `)
-            }
-        } else {
-            miss = sprites.create(img`
-                .............................................
-                .............................................
-                .............................................
-                .............................................
-                .666..6666..6666...666666...666666......ee...
-                .ffcfffccf.ffccf..fcccccff.efcccccfc.fffccf..
-                efbdecbdbf.fcd4f.fcdddddbfcfcdddddef.fcd5bf..
-                efb44444bf6fc44f6fe44ee44ffc444e44ef.fb444fc.
-                cf4444444fcfe44ffc444cfffcfe44effcfcef444efc.
-                cc4444444fcfe44fffce44ecffffe444ecfcec444ff..
-                fc4ecef4efcfe4effffffe44efffffe444effc44cf...
-                fc4efff4ef6fe4efffeee444effcee4444effceef....
-                fc4efffeef6fe2efefe22eeeffffe22eeffcfe2cc....
-                ffffffffffcfffff.effffccc..fffffccc.ffff.....
-                .............................................
-                .............................................
-                .............................................
-                .............................................
-                `, SpriteKind.Text)
-            if (arrow_list[expected_arrow_index].kind() == SpriteKind.right_arrow) {
-                arrow_list[expected_arrow_index].setImage(img`
-                    ....................
-                    .......b............
-                    .......22...........
-                    .......2226.........
-                    .......22222b.......
-                    .......2222222......
-                    .......22222222.....
-                    .222222222222222....
-                    .22222222222222222..
-                    .222222222222222222.
-                    .22222222222222222..
-                    .222222222222222....
-                    .22222222222222.....
-                    .......2222222......
-                    .......222222.......
-                    .......22222........
-                    .......2226.........
-                    .......26...........
-                    .......2............
-                    ....................
-                    `)
-                miss.setPosition(100, 90)
-            }
-            if (arrow_list[expected_arrow_index].kind() == SpriteKind.top_arrow) {
-                miss.setPosition(50, 90)
-                arrow_list[expected_arrow_index].setImage(img`
-                    ....................
-                    .........2..........
-                    ........222.........
-                    .......22222........
-                    ......2222222.......
-                    ......22222229......
-                    .....222222222......
-                    ....92222222222.....
-                    ....222222222229....
-                    ...2222222222222....
-                    ..222222222222229...
-                    ..2222222222222222..
-                    .22222222222222222f.
-                    ......d222222.......
-                    ......d222222.......
-                    ......d222222.......
-                    ......d222222.......
-                    ......d222222.......
-                    ......d222222.......
-                    ....................
-                    `)
-            }
-            if (arrow_list[expected_arrow_index].kind() == SpriteKind.bottom_arrow) {
-                arrow_list[expected_arrow_index].setImage(img`
-                    ....................
-                    .......2222222......
-                    .......2222222......
-                    .......2222222......
-                    .......2222222......
-                    .......2222222......
-                    .......2222222......
-                    ..22222222222222222.
-                    ..22222222222222222.
-                    ...222222222222222..
-                    ...222222222222222..
-                    ....2222222222222...
-                    .....22222222222....
-                    ......222222222.....
-                    .......2222222......
-                    ........22222.......
-                    .........222........
-                    .........222........
-                    ..........2.........
-                    ....................
-                    `)
-                miss.setPosition(70, 90)
-            }
-            miss.setVelocity(0, -10)
-            sprites.destroy(miss, effects.fountain, 700)
-        }
-    }
-    if (expected_arrow_index < arrow_list.length - 1) {
-        expected_arrow_index += 1
-    }
-}
-function scene4_leftcontrol() {
-    if (s4_round1 == 1) {
-        selector.setPosition(60, 105)
-    }
-    if (s4_round2 == 1) {
-        selector.setPosition(60, 105)
-    }
-    if (s4_round3 == 1) {
-        selector.setPosition(60, 105)
     }
 }
 controller.left.onEvent(ControllerButtonEvent.Pressed, function () {
@@ -5152,132 +5218,6 @@ function test2 () {
         arrow_list7[arrow_index28].setVelocity(0, 300)
     }
 }
-function scene5_end () {
-	sprites.destroyAllSpritesOfKind(SpriteKind.Player)
-    scene.setBackgroundImage(img`
-        eeeee2222222222222222222222222222222222ee2222ee2222ee2222222eeeee2222222222222222222222222222222222ee22222eeee222ee2eeeee2222222222222222222222222222222222ee222
-        222eeeee22222222222222222222222222222eee2222eeee2222ee222222222eeeee22222222222222222222222222222eee2222eeeee222ee22222eeeee22222222222222222222222222222eee2222
-        222222eeeeeee222222222222222222222eeee22222eeeeee2222eee2222222222eeeeeee222222222222222222222eeee22222eeee2222ee222222222eeeeeee222222222222222222222eeee22222e
-        222222222eeeeeeeeeeeeee2222222eeeee222222eeee22eee2222eeee22222222222eeeeeeeeeeeeee2222222eeeee222223eeee22222eeee22222222222eeeeeeeeeeeeee2222222eeeee222222eee
-        e222222222222222222222222222eeee2222222eeee22222eef22222eeeee222222222222222222222222222eeee2333333eeee22222efe2eeeee222222222222222222222222222eeee2222222eeee2
-        eeeeeeee22222222222222222222222222222eee2222222eeeefe222222eeeeeeeee22222222222222333333333333322eee2222222efe22222eeeeeeeee22222222222222222222222222222eee2222
-        2222eeeeeeeee222222222222222222222eeee2222222eeeeeeeffe222222222eeeeeeeee222223333333333322222eeee2223322effeee222322222eeeeeeeee222222222222222222222eeee222222
-        2223322222222222222222222222222eeee2222222eeeeeeee222efffe222222222222222222222222222222222eeee2233332efffe22eeeee233333222222222222222222222222222eeee2222222ee
-        2222233332222222222222222222222222222222eeeeeeeee22222eefffe2222222222222222222222222222222233333332efffee22222eeeee2233333333333333333332222222222222222222eeee
-        eeee22233333333333333332222222222222eeeeee222222222eeeee22ffffee22222222223333333333333333333332eeffff22eeeee22222eeeeee23333333333333222222222222222222eeeeeeee
-        eeeeeeeeee233333333332222222222eeeeeee2222222222eeeee2222ffeefffffffee2222222222223333333332fffffffeeff2222eeeee222222eeeeeeee222222222222222222222eeeeeeeeeeeee
-        eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee22eeeeeeee2222eee222222ffeeeeeeeeeeffffffffffffffffffffffffeeeeeeeeeeff222222eee2222eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee
-        eeeeeeeeeee22222222222222ee22222222222222222222222222effeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeffe22222222222222222222222222ee22222222222222eeeeeeeeeee
-        eeeeeeeeee22222222222222222eeee2222222222222222222efffeeeeeeeeeeeeeeeeee2eeeeeeeeeeeeeeeeee2eeeeeeeeeeeeeefffe2222222222222222222eeee22222222222222222eeeeeeeeee
-        eeeeeeeeee222222222222222222eeeeeeee222222222eeefffeeeeeeeeeeeeeeeeeeeee222222eeeeeeeeee2222eeeeeeeeeeeeeeeeefffeee222222222eeeeeeee222222222222222222eeeeeeeeee
-        eeeeeeeee2222222222222222222eeeeeeeeeeeeeeeeffffeeeeeeeeeeeeeeeeeeeeeeee22222222222222222222ee2eeeeeeeeeeeeeeeeeffffeeeeeeeeeeeeeeee2222222222222222222eeeeeeeee
-        eeeeeeeee2222222222222222222ee2222effffffffffffeeeeeeeeeeeeeeeeeeeeeeeee22222222222222222222ee22eeeeeeeeeeeeeeeefffffffffffffe2222ee2222222222222222222eeeeeeeee
-        eeeeeeee22e22222222222222222ee2222eeee2efffffffeeeeeeeeeeeeeeeeeeeee22ee22222222222222222222e222eeeeeeeeeeeeeeeeffffffffe2eeee2222ee22222222222222222e22eeeeeeee
-        eeeeeeee2222222222222222222ee22222ee22eeffffffeeeeeeeeeeeeeeeeeeeeee22ee22222222222222222222e222eeeeeeeeeeeeeeeeffffffffee22ee22222ee2222222222222222222eeeeeeee
-        eeeeeeee2e2222222222222222eee22222ee22efffffffeeeeeeeeeeeeeeeeeeeeee22ee22222222222222222222e222eeeeeeeeeeeeeeeefffffffffe22ee22222eee2222222222222222e2eeeeeeee
-        eeeeeee22e2222222222222222ee222222e22eefffffffeeeeeeeeeeeeeeeeeeeeee22ee22222222222222222222e222eeeeeeeeeeeeeeeefffffffffee22e222222ee2222222222222222e22eeeeeee
-        eeeeeee22e222222222222222ee222222ee22effffffffeeeeeeeeeeeeeeeeee2eee22ee22222222222222222222e222eeee2eeeeeeeeeeeefffffffffe22ee222222ee222222222222222e22eeeeeee
-        eeeeee22e2222222222222222ee222222e22eeffffffffeeeeeeeeeeeeeeeeee2eee22ee22222222222222222222e2222eee2eeeeeeeeeeeefffffffffee22e222222ee2222222222222222e22eeeeee
-        eeeeee22e222222222222222ee222222ee2eeeffffffffeeeeeeeeeeeeeeeeee2ee222e222222222222222222222e2222eee2eeeeeeeeeeeefffffffffe3e2ee222222ee222222222222222e22eeeeee
-        eeeee22ee222222222222222ee22222ee22eefffffffffeeeeeeeeeeeeeeeeee2ee222e2222222222222222222222e222eee2eeeeeeeeeeeeffffffffffe322ee22222ee222222222222222ee22eeeee
-        eeeee22e222222222222222ee222222ee2eeeffffffffeeeeeeeeeeeeeeeeee22ee222e2222222222222222222222e222eee2eeeeeeeeeeeeffffffffffe3e2ee222222ee222222222222222e22eeeee
-        eeee22ee222222222222222e222222ee22eefffffffffeeeeeeeeeeeeeeeeee22ee222e2222222222222222222222e222eee22eeeeeeeeeeeeffffffffffe322ee222222e222222222222222ee22eeee
-        eeee22ee22e22222222222ee22222ee22eeffffffffffeeeeeeeeeeeeeeeeee22ee222e2222222222222222222222e222eeee2eeeeeeeeeeeefffffffffff3322ee22222ee22222222222e22ee22eeee
-        eeee2ee222222222222222e222222ee32eeffffffffffeeeeeeeeeeeeeeeeee22ee222e2222222222222222222222e2222eee2eeeeeeeeeeeefffffffffffe332ee222222e222222222222222ee2eeee
-        eee22ee22e22222222222e222222ee32eeffffffeffffeeeeeeeeeeeeeeeeee22ee222e2222222222222222222222e2222eee2eeeeeeeeeeeeffffffffffff3322ee222222e22222222222e22ee22eee
-        eee2ee222e22222222222e22222ee23eeeffffffeffffeeeeeeeeeeeeeeeeee22ee222e2222222222222222222222e2222eee2eeeeeeeeeeeeffffffffffffe3322ee22222e22222222222e222ee2eee
-        ee22ee22e22222222222e222222ee32eefffffffefffeeeeeeeeeeeeeeeeeee22ee222e2222222222222222222222e2222eee2eeeeeeeeeeeeeffffffffffffe332ee222222e22222222222e22ee22ee
-        ee2eee2ee2222222222e222222ee33eeefffffffefffeefeeeeeeeeeeeeeee222ee22ee2222222222222222222222e2222eee22eeeeeeeeeeeeffffffffffffe3322ee222222e2222222222ee2eee2ee
-        eeeee22ee2222222222e22222ee33eeeffffffffffffeefeeeeeeeeeeeeeee22eee22ee2222222222222222222222e2222eee22eeeeeeeeeeeefffffffffffffe3322ee22222e2222222222ee22eeeee
-        eeeee2ee2222222222222222eee33eeffffffffeffffeefeeeeeeeeeeeeeee22eee22ee2222222222222222222222e2222eee22eeeeeeeeeeeefeffffffffffffe332eee2222222222222222ee2eeeee
-        eeee22ee2222222222222222ee33eeeffffffffeffffeefeeeeeeeeeeeeeee22ee222ee2222222222222222222222e2222eee22eeeeeeeeeeeefeffffefffffffe3332ee2222222222222222ee22eeee
-        eeee2ee2222222222222222ee33eeefffffffffeffffeefeeeeeeeeeeeeeee22ee222e22222222222222222222222e2222eee22eeeeeeeeeeeeeeffffeffffffffe3322ee2222222222222222ee2eeee
-        eeee2ee222222222222222ee333eeffffffffffefffeeeeeeeeeeeeeeeeeee22ee222e22222222222222222222222e2222eee22eeeeeeeeeeeeeeefffefffffffffe3322ee222222222222222ee2eeee
-        eee2ee2222222222222222ee33eeeffffffffffefffeeeeeeeeeeeeeeeeeee22ee222e22222222222222222222222e22222ee22eeeeeeeeeeeeeeefffefffffffffee332ee2222222222222222ee2eee
-        eee2ee222222222222222ee33eeefffffffffffefffeefeeeeeeeeeeeeeeee22ee222e22222222222222222222222ee2222eee2eeeeeeeeeeeeeeefffeffffffffffe3332ee222222222222222ee2eee
-        ee2ee2222222222222222e33eeefffffffffffeefffeefeeeeeeeeeeeeeee222ee222e22222222222222222222222ee2222eee22eeeeeeeeeeeeeeffffeffffffffffe3322e2322222222222222ee2ee
-        ee2ee222222222222232e333eeffffffffffffeefffeefeeeeeeeeeeeeeee22eee222e22222222222222222222222ee2222eee22eeeeeeeeeeeeeeefffefffffffffffe3322e322222222222222ee2ee
-        e2ee2222222222222322e33eeeffffffffffffeefffeefeeeeeeeeeeeeeee22ee2222e22222222222222222222222ee2222eee22eeeeeeeeeeeeeeefffefffffffffffee332e2322222222222222ee2e
-        e2ee222222222222332e33eeefffffffffffffeefffeefeeeeeeeeeeeeeee22ee2222e22222222222222222222222ee2222eee22eeeeeeeeeeeeeeefffeffffffffffffe3322e322222222222222ee2e
-        eee222222222222332e33eeeffffffffffffffeeffeeeeeeeeeeeeeeeeeee22ee2222222222222222222222222222ee2222eee22eeeeeeeeeeeeeeefffefffffffffffffe3322e322222222222222eee
-        eee222222222222322332eefffffffffffffffefffeefeeeeeeeeeeeeeeee22ee2222222222222222222222222222ee2222eee22eeeeeeeeeeeeeeeeffeefffffffffffffe3322322222222222222eee
-        ee222222222222332333eeeffffffffffffffeefffeefeeeeeeeeeeeeeee222ee22222222222222222222222222222e2222eee22eeeeeeeeeeeeeeeeffeefffffffffffffee3223322222222222222ee
-        ee22222222222332233eeefffffffffffffffeefffeefeeeeeeeeee2eeee222ee22222222222222222222222222222e2222eee22eeeeeeeeeeeeeeeeffeeffffffffffffffee322322222222222222ee
-        e22222222222332233eeeffffffffffffffffeefffeefeeeeeeeeee2eeee22eee22222222222222222222222222222e2222eee22eeeeeeeeeeeeeeeefffefffffffffffffffe3323322222222222222e
-        e22222222222332332eefffffffffffffffffeefffeefeeeeeeeeeeeeeee22eee22222222222222222222222222222e2222eeee2eeeeeeeeeeeeeeeefffeefffffffffffffffe322322222222222222e
-        22222e22222332232eeefffffffffffffffffeefffeefeeeeeeeee2eeeee22ee222222222222222222222222222222e22222eee22eeeeeeeeeeeeeeeeffeefffffffffffffffeee23322222222e22222
-        22222e2222332232eeeffffffffffffffffffeeffeefeeeeeeeeee2eeeee22ee222222222222222222222222222222e22222eee22eeeeeeeeeeeeeeeeffeeffffffffffffffffeee2322222222e22222
-        222222222332222eeeffffffffffffffffffeefffeefeeeeeeeeee2eeee222ee222222222222222222222222222222e22222eee22eeeeeeeeeeeeeeeeffeefffffffffffffffffeee332222222222222
-        2222e222233222eeefffffffffffffffffffeefffeefeeeeeeeeee2eeee222ee222222222222222222222222222222e22222eee22eeeeeeeeeeeeeeeefffeffffffffffffffffffeee322222222e2222
-        2222e222332222eeefffffffffffffffffffeefffeefeeeeeeeeee2eeee222ee222222222222222222222222222222e22222eee22eeeeeeeeeeeeeeeefffeefffffffffffffffffeee332222222e2222
-        222e222332222eeeffffffffffffffffffffeefffeefeeeeeeeee22eeee222ee222222222222222222222222222222e22222eee22eeeeeeeeeeeeeeeefffeeffffffffffffffffffeee322222222e222
-        222e22232e22eeefffffffffffffffffffffeefffeefeeeeeeeee2eeeee22eee222222222222222222222222222222222222eee22eeeeeeeeeeeeeeeeeffeefffffffffffffffffffee332e22222e222
-        222e22222e2eeeffffffffffffffffffffffeefffefeeeeeeeeee2eeeee22ee2222222222222222222222222222222222222eee22eeeeeeeeeeeeeeeeeffeeffffffffffffffffffffee32e22222e222
-        22ee2222e2eeeffffffffffffffffffffffeeffffefeeeeeeeeee2eeee222ee2222222222222222222222222222222222222eee22eeeeeeeeeeeeeeeeefffefffffffffffffffffffffee32e2222ee22
-        22e22222e2eeeffffffffffffffffffffffeeffffefeeeeeeeee22eeee222ee2222222222222222222222222222222222222eee222eeeeeeeeeeeeeeeefffeeffffffffffffffffffffee32e22222e22
-        22e2222eeeeefffffffffffffffffffffffeefffeefeeeeeeeee22eeee222ee2222222222222222222222222222222222222eee222eeeeeeeeeeeeeeeefffeefffffffffffffffffffffeeeee2222e22
-        2ee2222eeeeffffffffffffffffffffffffeefffeefeeeeeeeee22eeee222ee2222222222222222222222222222222222222eeee22e2eeeeeeeeeeeeeefffeeffffffffffffffffffffffeeee2222ee2
-        2e2222eeeefffffffffffffffffffffffffeefffefeeeeeeeeee2eeeee222ee2222222222222222222222222222222222222eeee22eeeeeeeeeeeeeeeeeffeefffffffffffffffffffffffeeee2222e2
-        2e222eee2effffffffffffffffffffffffeeefffefeeeeeeeeee2eeee222eee222e222222222222222222222222222222222eeee22ee2eeeeeeeeeeeeeefffeeffffffffffffffffffffffe2eee222e2
-        2e222eee2effffffffffffffffffffffffeeffffefeeeeeeeee22eeee222ee2222e222222222222222222222222222222222eeee22ee2eeeeeeeeeeeeeefffeeffffffffffffffffffffffe2eee222e2
-        ee22eeee2effffffffffffffffffffffffeeffffefeeeeeeeee22eeee222ee2222e2222222222222222222222222222e22222eee22ee2eeeeeeeeeeeeeefffeeffffffffffffffffffffffe2eeee22ee
-        ee22eee22effffffffffffffffffffffffeeffffefeeeeeeeee22eeee222ee2222e2222222222222222222222222222e22222eee22ee2eeeeeeeeeeeeeefffeeffffffffffffffffffffffe22eee22ee
-        eeeeee22eeffffffffffffffffffffffffeeffffeeeeeeeeeee22eeee222ee2222e2222222222222222222222222222e22222eee22ee2eeeeeeeeeeeeeeeffeeffffffffffffffffffffffee22eeeeee
-        eeeee222efffffffffffffffffffffffffeeffffeeeeeeeeeee2eeeee222ee2222e2222222222222222222222222222e22222eee222e22eeeeeeeeeeeeeefffeeffffffffffffffffffffffe222eeeee
-        2222222eeffffffffffffffffffffffffeeefffeeeeeeeeeee22eeee2222ee2222e2222222222222222222222222222e22222eee222e22eeeeeeeeeeeeeefffeeffffffffffffffffffffffee2222222
-        222222eefffffffffffffffffffffffffeeffffeeeeeeeeeee22eeee2222e22222e2222222222222222222222222222e22222eee222ee2eeeeeeeeeeeeeefffeefffffffffffffffffffffffee222222
-        22222eeefffffffffffffffffffffffffeeffffeeeeeeeeeee22eeee222ee22222e2222222222222222222222222222e22222eeee22ee2eeeeeeeeeeeeeeeffeefffffffffffffffffffffffeee22222
-        222eeeeefffffffffffffffffffffffffeeffffeeeeeeeeeee22eeee222ee22222e2222222222222222222222222222e22222eeee22ee2eeeeeeeeeeeeeeefffeeffffffffffffffffffffffeeeee222
-        eeee2eeeeffffffffffffffffffffffffeeffffeeeeeeeeee22eeeee222ee2222ee2222222222222222222222222222e22222eeee22ee2eeeeeeeeeeeeeeefffeefffffffffffffffffffffeeee2eeee
-        222e2ee2effffffffffffffffffffffffeeffffeeeeeeeeee22eeee2222ee2222ee2222222222222222222222222222e22222eeee22ee22eeeeeeeeeeeeeefffeefffffffffffffffffffffe2ee2e222
-        222e2ee2efffffffffffffffffffffffeeeffffeeeeeeeeee22eeee2222ee2222ee2222222222222222222222222222e22222eeee22ee22eeeeeeeeeeeeeefffeefffffffffffffffffffffe2ee2e222
-        222e2ee2efffffffffffffffffffffffeefffffeeeeeeeeee22eeee2222ee2222ee2222222222222222222222222222e22222eeee222e22eeeeeeeeeeeeeeffffeeffffffffffffffffffffe2ee2e222
-        222e2ee2efffffffffffffffffffffffeefffffeeeeeeeee22eeeee2222ee2222ee2222222222222222222222222222e22222eeee222e22eeeeeeeeeeeeefffffeeffffffffffffffffffffe2ee2e222
-        222e2ee22effffffffffffffffffffffeefffffeeeeeeeee22eeee22222e22222ee2222222222222222222222222222ee2222eeee222ee2eeeeeeeeeeeeeeffffeefffffffffffffffffffe22ee2e222
-        222e2ee22effffffffffffffffffffffeeffffeeeeeeeeee22eeee22222e22222ee2222222222222222222222222222ee2222eeeee22ee2eeeeeeeeeeeeeefffffefffffffffffffffffffe22ee2e222
-        222e2eee2effffffffffffffffffffffeeffffeeeeeeeeee22eeee22222e22222ee2222222222222222222222222222ee2222eeeee22ee22eeeeeeeeeeeeefffffefffffffffffffffffffe2eee2e222
-        222e22ee2eefffffffffffffffffffffefffffeeeeeeeee222eee22222ee22222ee2222222222222222222222222222ee2222eeeee22ee22eeeeeeeeeeeeeffffffffffffffffffffffffee2ee22e222
-        222e22ee22efffffffffffffffffffffefffffeeeeeeeee22eeee22222ee22222ee2222222222222222222222222222ee2222eeeee22ee22eeeeeeeeeeeeeefffffffffffffffffffffffe22ee22e222
-        222e22ee22efffffffffffffffffffffefffffeeeeeeeee22eeee22222ee22222e22222222222222222222222222222ee2222eeeee22ee22eeeeeeeeeeeeeefffffffffffffffffffffffe22ee22e222
-        222e22ee22efffffffffffffffffffffffffffeeeeeeeee22eee222222ee22222e22222222222222222222222222222ee22222eeee222e22eeeeeeeeeeeeeefffffffffffffffffffffffe22ee22e222
-        222e22ee222effffffffffffffffffffffffffeeeeeeeee22eee222222ee22222e22222222222222222222222222222ee22222eeee222ee2eeeeeeeeeeeeeeefffffffffffffffffffffe222ee22e222
-        222e22eee22effffffffffffffffffffffffffeeeeeeee22eeee222222e222222e22222222222222222222222222222ee22222eeee222ee22eeeeeeeeeeeeeefffffffffffffffffffffe22eee22e222
-        222e222ee22effffffffffffffffffffffffffeeeeeeee22eeee222222e222222e22222222222222222222222222222ee22222eeee222ee22eeeeeeeeeeeefffffffffffffffffffffffe22ee222e222
-        222e222ee22eeffffffffffffffffffffffffeeeeeeeee22eee2222222e222222ee22222eeee222eeee222eeee22222ee222222eeee22222eeeeeeeeeeeeeffffffffffffffffffffffee22ee222e222
-        222e222ee222efffffffbffffffffbbbfffffbbeeeeebeeeeeeee222eebeeeeeeddeeeeeeedeeeeeeeeeeeedeeeeeeeddeeeeeebeee22eeeeeeeebeeeeebbfffffbbbffffffffbfffffe222ee222e222
-        222e222ee222ebbfffbbbbbfffffbbbbbbbbbbbbbbbbbbeebbbbeeeeedddeeeedddddeeeddddeeeeddeeeeddddeeedddddeeeedbbbbeeebbbbeebbbbbbbbbbbbbbbbbbfffffbbbbbfffe222ee222e222
-        222ee22ee222eebbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbee222ee22ee222
-        222ee22ee2222ebbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbe2222ee22ee222
-        2222e222e2222eebbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbee2222e222e2222
-        2222e222ee2222ebbbbbbbbbbbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbe2222ee222e2222
-        2222e222ee2222ebbbbbbbbbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbbbbbbbbe2222ee222e2222
-        2222e222ee2222eebbbbbbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbbbbbee2222ee222e2222
-        2222e2222e22e22ebbbbbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbbbbe22e22e2222e2222
-        222222222e22e22eebbbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbbee22e22e222222222
-        222222222e22e222ebbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbe222e22e222222222
-        2222222222e22e22eebbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbee22e22e2222222222
-        222222e222e22e222ebbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbe222e22e222e222222
-        222222e222222e222eebbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbee222e222222e222222
-        222222e2222222e222ebbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbe222e2222222e222222
-        222222ee222222e222eebbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbee222e222222ee222222
-        2222222e222222e2222ebbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbe2222e222222e2222222
-        22222e2e2222222e222eebbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbee222e2222222e2e22222
-        22222e2e2222222e222eebbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbee222e2222222e2e22222
-        22222e2e22222222e22ebbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbe22e22222222e2e22222
-        22222e2ee2222222e22ebbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbe22e2222222ee2e22222
-        22222e2ee2222222eeeebbbbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbbbeeee2222222ee2e22222
-        22222e22e2222222eeebbbbbbbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbbbbbbeee2222222e22e22222
-        22222ee2e2222222eebbbbbbbbbbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbbbbbbbbbee2222222e2ee22222
-        22222ee2e222222eebbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbee222222e2ee22222
-        222222e2ee22222ebbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbe22222ee2e222222
-        222222e22e2222eebbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbee2222e22e222222
-        222222e22e22eeebbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbddddddddddddddddddddddddddddddddddbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbeee22e22e222222
-        222222e2eeeeebbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbeeeee2e222222
-        222222e2ebbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbe2e222222
-        222222eeebbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbeee222222
-    `)
-    displayDialogue("The End.", 40, 60, 15, 1, 26)
-}
 function scene2_initialDialogue1 () {
     displayDialogue("Hello Jamal, today     is the day.", 25, 63, 15, 1, 19)
     displayDialogue("It's time for your    evaluation.", 25, 63, 15, 1, 19)
@@ -5293,6 +5233,26 @@ function scene2_initialDialogue1 () {
     scene2_game_ready_flag = 1
     scene_2_initial_dialogue = 0
     scene2_game_ready()
+}
+function scene4_leftcontrol () {
+    if (s4_round1 == 1) {
+        selector.setPosition(60, 105)
+    }
+    if (s4_round2 == 1) {
+        selector.setPosition(60, 105)
+    }
+    if (s4_round3 == 1) {
+        selector.setPosition(60, 105)
+    }
+}
+function scene3_A_controls () {
+    if (scene3_start_flag) {
+        makeScene3()
+        scene3_start_flag = 0
+        if (scene3_start_flag == 0) {
+            scene3_dialogue()
+        }
+    }
 }
 function intro_prologue1 () {
     game.showLongText("The year is 2080...    ", DialogLayout.Bottom)
@@ -6046,7 +6006,7 @@ function makeScene3 () {
 }
 function scene2_test2_init () {
     displayDialogue("Great. Now for test 2.", 19, 63, 15, 1, 22)
-    displayDialogue("Goodluck...", 20, 63, 15, 1, 19)
+    displayDialogue("Good luck...", 50, 63, 15, 1, 19)
     music.play(music.stringPlayable("- - D - D - E - ", 120), music.PlaybackMode.InBackground)
     pause(1000)
     ready = sprites.create(img`
@@ -6551,222 +6511,39 @@ function initialize_scene5 () {
     old_guy.setPosition(100, 92)
     scene5_dialogue()
 }
-function scene2_rightcontrol() {
-    if (scene2_game_ready_flag) {
-        if (arrow_list[expected_arrow_index].kind() == SpriteKind.right_arrow) {
-            if (!(arrow_list[expected_arrow_index].overlapsWith(right_arrow2))) {
-                arrow_list[expected_arrow_index].setImage(img`
-                    ....................
-                    .......b............
-                    .......22...........
-                    .......2226.........
-                    .......22222b.......
-                    .......2222222......
-                    .......22222222.....
-                    .222222222222222....
-                    .22222222222222222..
-                    .222222222222222222.
-                    .22222222222222222..
-                    .222222222222222....
-                    .22222222222222.....
-                    .......2222222......
-                    .......222222.......
-                    .......22222........
-                    .......2226.........
-                    .......26...........
-                    .......2............
-                    ....................
-                    `)
-                miss = sprites.create(img`
-                    .............................................
-                    .............................................
-                    .............................................
-                    .............................................
-                    .666..6666..6666...666666...666666......ee...
-                    .ffcfffccf.ffccf..fcccccff.efcccccfc.fffccf..
-                    efbdecbdbf.fcd4f.fcdddddbfcfcdddddef.fcd5bf..
-                    efb44444bf6fc44f6fe44ee44ffc444e44ef.fb444fc.
-                    cf4444444fcfe44ffc444cfffcfe44effcfcef444efc.
-                    cc4444444fcfe44fffce44ecffffe444ecfcec444ff..
-                    fc4ecef4efcfe4effffffe44efffffe444effc44cf...
-                    fc4efff4ef6fe4efffeee444effcee4444effceef....
-                    fc4efffeef6fe2efefe22eeeffffe22eeffcfe2cc....
-                    ffffffffffcfffff.effffccc..fffffccc.ffff.....
-                    .............................................
-                    .............................................
-                    .............................................
-                    .............................................
-                    `, SpriteKind.Text)
-                miss.setPosition(50, 90)
-                miss.setVelocity(0, -10)
-                sprites.destroy(miss, effects.fountain, 700)
-            }
-            if (arrow_list[expected_arrow_index].overlapsWith(right_arrow2)) {
-                arrow_list[expected_arrow_index].setImage(img`
-                    ....................
-                    .......b............
-                    .......55...........
-                    .......5556.........
-                    .......55555b.......
-                    .......5555555......
-                    .......55555555.....
-                    .555555555555555....
-                    .55555555555555555..
-                    .555555555555555555.
-                    .55555555555555555..
-                    .555555555555555....
-                    .55555555555555.....
-                    .......5555555......
-                    .......555555.......
-                    .......55555........
-                    .......5556.........
-                    .......56...........
-                    .......5............
-                    ....................
-                    `)
-            }
-        } else {
-            miss = sprites.create(img`
-                .............................................
-                .............................................
-                .............................................
-                .............................................
-                .666..6666..6666...666666...666666......ee...
-                .ffcfffccf.ffccf..fcccccff.efcccccfc.fffccf..
-                efbdecbdbf.fcd4f.fcdddddbfcfcdddddef.fcd5bf..
-                efb44444bf6fc44f6fe44ee44ffc444e44ef.fb444fc.
-                cf4444444fcfe44ffc444cfffcfe44effcfcef444efc.
-                cc4444444fcfe44fffce44ecffffe444ecfcec444ff..
-                fc4ecef4efcfe4effffffe44efffffe444effc44cf...
-                fc4efff4ef6fe4efffeee444effcee4444effceef....
-                fc4efffeef6fe2efefe22eeeffffe22eeffcfe2cc....
-                ffffffffffcfffff.effffccc..fffffccc.ffff.....
-                .............................................
-                .............................................
-                .............................................
-                .............................................
-                `, SpriteKind.Text)
-            if (arrow_list[expected_arrow_index].kind() == SpriteKind.left_arrow) {
-                miss.setPosition(30, 90)
-                arrow_list[expected_arrow_index].setImage(img`
-                    ....................
-                    ............22......
-                    ...........222......
-                    ..........2222......
-                    ........222222......
-                    ......d2222222......
-                    .....22222222222222.
-                    ...2222222222222222.
-                    .222222222222222222.
-                    .222222222222222222.
-                    .222222222222222222.
-                    ..22222222222222222.
-                    ...2222222222222222.
-                    .....22222222222222.
-                    .......2222222......
-                    ........222222......
-                    .........22222......
-                    ............22......
-                    .............2......
-                    ....................
-                    `)
-            }
-            if (arrow_list[expected_arrow_index].kind() == SpriteKind.top_arrow) {
-                miss.setPosition(50, 90)
-                arrow_list[expected_arrow_index].setImage(img`
-                    ....................
-                    .........2..........
-                    ........222.........
-                    .......22222........
-                    ......2222222.......
-                    ......22222229......
-                    .....222222222......
-                    ....92222222222.....
-                    ....222222222229....
-                    ...2222222222222....
-                    ..222222222222229...
-                    ..2222222222222222..
-                    .22222222222222222f.
-                    ......d222222.......
-                    ......d222222.......
-                    ......d222222.......
-                    ......d222222.......
-                    ......d222222.......
-                    ......d222222.......
-                    ....................
-                    `)
-            }
-            if (arrow_list[expected_arrow_index].kind() == SpriteKind.bottom_arrow) {
-                arrow_list[expected_arrow_index].setImage(img`
-                    ....................
-                    .......2222222......
-                    .......2222222......
-                    .......2222222......
-                    .......2222222......
-                    .......2222222......
-                    .......2222222......
-                    ..22222222222222222.
-                    ..22222222222222222.
-                    ...222222222222222..
-                    ...222222222222222..
-                    ....2222222222222...
-                    .....22222222222....
-                    ......222222222.....
-                    .......2222222......
-                    ........22222.......
-                    .........222........
-                    .........222........
-                    ..........2.........
-                    ....................
-                    `)
-                miss.setPosition(70, 90)
-            }
-            miss.setVelocity(0, -10)
-            sprites.destroy(miss, effects.fountain, 700)
-        }
-    }
-    if (expected_arrow_index < arrow_list.length - 1) {
-        expected_arrow_index += 1
-    }
-}
-function scene4_rightcontrol() {
-    if (s4_round1 == 1) {
-        selector.setPosition(130, 105)
-    }
-    if (s4_round2 == 1) {
-        selector.setPosition(130, 105)
-    }
-    if (s4_round3 == 1) {
-        selector.setPosition(130, 105)
-    }
-}
 controller.right.onEvent(ControllerButtonEvent.Pressed, function () {
-    if (scene2_flag == 1){
+    if (scene2_flag == 1) {
         scene2_rightcontrol()
     }
-    if (scene4_flag == 1){
+    if (scene4_flag == 1) {
         scene4_rightcontrol()
     }
 })
-function scene5_dialogue () {
-    displayDialogue("Yep, it was basically impossible to tell    what was real.", 35, 60, 15, 1, 21)
-    displayDialogue("So what do we do? Is Belize doomed?", 10, 70, 15, 1, 18)
-    displayDialogue("Not if your generation fights smarter than I did.", 30, 60, 15, 1, 22)
-    displayDialogue("I need you to understand.", 70, 70, 15, 1, 14)
-    displayDialogue("AI isn't evil.", 70, 70, 15, 1, 26)
-    displayDialogue("It's a very helpful     tool that has    developed society.", 30, 60, 15, 1, 20)
-    displayDialogue("But humans must   set rules.", 70, 70, 15, 1, 16)
-    displayDialogue("Protect jobs.   Protect privacy.", 70, 70, 15, 1, 16)
-    displayDialogue("Protect our culture.", 40, 70, 15, 1, 26)
-    displayDialogue("It's too late to save the past.", 50, 70, 15, 1, 26)
-    displayDialogue("But you can save the future.", 50, 70, 15, 1, 26)
-    scene5_end()
+function scene4_A_controls () {
+    if (scene4_inital_scene) {
+        initialize_scene4()
+    }
+    if (scene4_initialDialogue == 1) {
+        s4_initialDialogue()
+    }
+    if (scene4_game_ready_flag == 1) {
+        scene4_game_ready()
+    }
+    if (s4_round1 == 1) {
+        round1()
+    }
+    if (scene4_finalDialogue == 1) {
+        s4_finalDialogue()
+        scene5_dialogue_flag = 1
+        scene4_flag = 0
+        scene5_flag = 1
+    }
 }
 function scene2_final_dialogue2 () {
-    displayDialogue("We're sorry Jamal.", 20, 73, 15, 1, 19)
+    displayDialogue("We're sorry Jamal.", 25, 73, 15, 1, 19)
     displayDialogue("But unfortunately...", 20, 73, 15, 1, 20)
-    displayDialogue("The AI seems to have surpassed you.", 20, 63, 15, 1, 19)
-    displayDialogue("We're going to have to let you go.", 20, 63, 15, 1, 19)
+    displayDialogue("The AI seems to have   surpassed you.", 20, 63, 15, 1, 20)
+    displayDialogue("We're going to have  to let you go.", 20, 63, 15, 1, 19)
     scene2_final_dialogue_flag = 0
     scene2_flag = 0
     scene3_flag = 1
@@ -6825,7 +6602,27 @@ function scene1_A_controls () {
     }
 }
 function initialize_scene4 () {
+    scene.setBackgroundImage(img`
+        f f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f f 
+        f f f f f f f f f f f f f f f f 
+        `)
+    sprites.destroyAllSpritesOfKind(SpriteKind.Player)
     sprites.destroyAllSpritesOfKind(SpriteKind.Text)
+    displayDialogue("...Belize wasn'tBelize anymore.", 40, 60, 2, 1, 16)
     scene.setBackgroundImage(img`
         eeeee2222222222222222222222222222222222ee2222ee2222ee2222222eeeee2222222222222222222222222222222222ee22222eeee222ee2eeeee2222222222222222222222222222222222ee222
         222eeeee22222222222222222222222222222eee2222eeee2222ee222222222eeeee22222222222222222222222222222eee2222eeeee222ee22222eeeee22222222222222222222222222222eee2222
@@ -7381,6 +7178,26 @@ function initialize_scene4_final () {
     sorting_game_player.setPosition(82, 110)
     scene4_finalDialogue = 1
 }
+function scene5_dialogue () {
+    displayDialogue("Yep, it was basically  impossible", 75, 55, 15, 1, 11)
+    displayDialogue("to tell what  was real.", 75, 65, 15, 1, 12)
+    displayDialogue(" So what do we do?", 10, 65, 15, 1, 9)
+    displayDialogue("Is Belize doomed?", 10, 65, 15, 1, 9)
+    displayDialogue("Not if your generation", 75, 65, 15, 1, 11)
+    displayDialogue("fights smarterthan mine did.", 70, 65, 15, 1, 14)
+    displayDialogue("I need you to understand.", 70, 70, 15, 1, 14)
+    displayDialogue("AI isn't evil.", 70, 70, 15, 1, 14)
+    displayDialogue("It's a very helpful tool", 75, 65, 15, 1, 12)
+    displayDialogue("that has developed society.", 75, 55, 15, 1, 9)
+    displayDialogue("But humans must  set rules.", 60, 70, 15, 1, 15)
+    displayDialogue("  Protect jobs. Protect privacy.", 60, 65, 15, 1, 16)
+    displayDialogue("  Protect   our culture.", 70, 65, 15, 1, 12)
+    displayDialogue("It's too late...", 75, 65, 15, 1, 9)
+    displayDialogue(" to save the past.", 75, 65, 15, 1, 9)
+    displayDialogue("But you can save", 65, 70, 15, 1, 16)
+    displayDialogue("...the future.", 70, 70, 15, 1, 14)
+    scene5_end()
+}
 function initialize_scene2 () {
     scene.setBackgroundImage(img`
         f f f f f f f f f f f f f f f f 
@@ -7810,6 +7627,184 @@ function round3 () {
     pause(1500)
     s4_round3 = 0
 }
+function scene2_leftcontrol () {
+    if (scene2_game_ready_flag || scene2_game_ready2_flag) {
+        if (arrow_list[expected_arrow_index].kind() == SpriteKind.left_arrow) {
+            if (!(arrow_list[expected_arrow_index].overlapsWith(left_arrow2))) {
+                arrow_list[expected_arrow_index].setImage(img`
+                    ....................
+                    ............22......
+                    ...........222......
+                    ..........2222......
+                    ........222222......
+                    ......d2222222......
+                    .....22222222222222.
+                    ...2222222222222222.
+                    .222222222222222222.
+                    .222222222222222222.
+                    .222222222222222222.
+                    ..22222222222222222.
+                    ...2222222222222222.
+                    .....22222222222222.
+                    .......2222222......
+                    ........222222......
+                    .........22222......
+                    ............22......
+                    .............2......
+                    ....................
+                    `)
+                miss = sprites.create(img`
+                    .............................................
+                    .............................................
+                    .............................................
+                    .............................................
+                    .666..6666..6666...666666...666666......ee...
+                    .ffcfffccf.ffccf..fcccccff.efcccccfc.fffccf..
+                    efbdecbdbf.fcd4f.fcdddddbfcfcdddddef.fcd5bf..
+                    efb44444bf6fc44f6fe44ee44ffc444e44ef.fb444fc.
+                    cf4444444fcfe44ffc444cfffcfe44effcfcef444efc.
+                    cc4444444fcfe44fffce44ecffffe444ecfcec444ff..
+                    fc4ecef4efcfe4effffffe44efffffe444effc44cf...
+                    fc4efff4ef6fe4efffeee444effcee4444effceef....
+                    fc4efffeef6fe2efefe22eeeffffe22eeffcfe2cc....
+                    ffffffffffcfffff.effffccc..fffffccc.ffff.....
+                    .............................................
+                    .............................................
+                    .............................................
+                    .............................................
+                    `, SpriteKind.Text)
+                miss.setPosition(25, 90)
+                miss.setVelocity(0, -10)
+                sprites.destroy(miss, effects.fountain, 700)
+            }
+            if (arrow_list[expected_arrow_index].overlapsWith(left_arrow2)) {
+                arrow_list[expected_arrow_index].setImage(img`
+                    ....................
+                    .............f......
+                    ...........df5......
+                    ..........f555......
+                    ........655555......
+                    ......df555555......
+                    .....f5555555555555.
+                    ...6555555555555555.
+                    ..f5555555555555555.
+                    .f55555555555555555.
+                    .555555555555555555.
+                    ..55555555555555555.
+                    ...d555555555555555.
+                    .....6555555555bbb5.
+                    .......5555555......
+                    ........d55555......
+                    ..........c555......
+                    ............55......
+                    .............b......
+                    ....................
+                    `)
+            }
+        } else {
+            miss = sprites.create(img`
+                .............................................
+                .............................................
+                .............................................
+                .............................................
+                .666..6666..6666...666666...666666......ee...
+                .ffcfffccf.ffccf..fcccccff.efcccccfc.fffccf..
+                efbdecbdbf.fcd4f.fcdddddbfcfcdddddef.fcd5bf..
+                efb44444bf6fc44f6fe44ee44ffc444e44ef.fb444fc.
+                cf4444444fcfe44ffc444cfffcfe44effcfcef444efc.
+                cc4444444fcfe44fffce44ecffffe444ecfcec444ff..
+                fc4ecef4efcfe4effffffe44efffffe444effc44cf...
+                fc4efff4ef6fe4efffeee444effcee4444effceef....
+                fc4efffeef6fe2efefe22eeeffffe22eeffcfe2cc....
+                ffffffffffcfffff.effffccc..fffffccc.ffff.....
+                .............................................
+                .............................................
+                .............................................
+                .............................................
+                `, SpriteKind.Text)
+            if (arrow_list[expected_arrow_index].kind() == SpriteKind.right_arrow) {
+                arrow_list[expected_arrow_index].setImage(img`
+                    ....................
+                    .......b............
+                    .......22...........
+                    .......2226.........
+                    .......22222b.......
+                    .......2222222......
+                    .......22222222.....
+                    .222222222222222....
+                    .22222222222222222..
+                    .222222222222222222.
+                    .22222222222222222..
+                    .222222222222222....
+                    .22222222222222.....
+                    .......2222222......
+                    .......222222.......
+                    .......22222........
+                    .......2226.........
+                    .......26...........
+                    .......2............
+                    ....................
+                    `)
+                miss.setPosition(100, 90)
+            }
+            if (arrow_list[expected_arrow_index].kind() == SpriteKind.top_arrow) {
+                miss.setPosition(50, 90)
+                arrow_list[expected_arrow_index].setImage(img`
+                    ....................
+                    .........2..........
+                    ........222.........
+                    .......22222........
+                    ......2222222.......
+                    ......22222229......
+                    .....222222222......
+                    ....92222222222.....
+                    ....222222222229....
+                    ...2222222222222....
+                    ..222222222222229...
+                    ..2222222222222222..
+                    .22222222222222222f.
+                    ......d222222.......
+                    ......d222222.......
+                    ......d222222.......
+                    ......d222222.......
+                    ......d222222.......
+                    ......d222222.......
+                    ....................
+                    `)
+            }
+            if (arrow_list[expected_arrow_index].kind() == SpriteKind.bottom_arrow) {
+                arrow_list[expected_arrow_index].setImage(img`
+                    ....................
+                    .......2222222......
+                    .......2222222......
+                    .......2222222......
+                    .......2222222......
+                    .......2222222......
+                    .......2222222......
+                    ..22222222222222222.
+                    ..22222222222222222.
+                    ...222222222222222..
+                    ...222222222222222..
+                    ....2222222222222...
+                    .....22222222222....
+                    ......222222222.....
+                    .......2222222......
+                    ........22222.......
+                    .........222........
+                    .........222........
+                    ..........2.........
+                    ....................
+                    `)
+                miss.setPosition(70, 90)
+            }
+            miss.setVelocity(0, -10)
+            sprites.destroy(miss, effects.fountain, 700)
+        }
+    }
+    if (expected_arrow_index < arrow_list.length - 1) {
+        expected_arrow_index += 1
+    }
+}
 function gameover_scene () {
     scene.setBackgroundImage(img`
         eeeee2222222222222222222222222222222222ee2222ee2222ee2222222eeeee2222222222222222222222222222222222ee22222eeee222ee2eeeee2222222222222222222222222222222222ee222
@@ -8057,6 +8052,42 @@ function gameover_scene () {
     music.stopAllSounds()
     gameover_flag = 0
     initialize_scene4_final()
+}
+function scene2_A_controls () {
+    if (scene_2_state == 1) {
+        initialize_scene2()
+    }
+    if (scene_2_initial_dialogue == 1) {
+        sprites.destroy(rhthym_game_boss)
+        rhthym_game_boss = sprites.create(img`
+            . . . . f f f f . . . . 
+            . . f f e e e e f f . . 
+            . f f e e e e e e f f . 
+            f f f f 4 e e e f f f f 
+            f f f 4 4 4 e e f f f f 
+            f f f 4 4 4 4 e e f f f 
+            f 4 e 4 4 4 4 4 4 e 4 f 
+            f 4 4 f f 4 4 f f 4 4 f 
+            f e 4 d d d d d d 4 e f 
+            . f e d d b b d d e f . 
+            . f f e 4 4 4 4 e f f . 
+            e 4 f b 1 1 1 1 b f 4 e 
+            4 d f 1 1 1 1 1 1 f d 4 
+            4 4 f 6 6 6 6 6 6 f 4 4 
+            . . . f f f f f f . . . 
+            . . . f f . . f f . . . 
+            `, SpriteKind.Player)
+        rhthym_game_boss.setPosition(75, 86)
+        scene2_initialDialogue1()
+    }
+    if (scene2_game_ready_flag) {
+        scene2_game_ready_flag = 0
+        scene2_game_ready2_flag = 1
+        scene2_test2_init()
+    }
+    if (scene2_final_dialogue_flag) {
+        scene2_final_dialogue2()
+    }
 }
 function correctCard () {
     music.play(music.createSoundEffect(WaveShape.Square, 710, 710, 222, 17, 212, SoundExpressionEffect.None, InterpolationCurve.Logarithmic), music.PlaybackMode.UntilDone)
@@ -8339,35 +8370,35 @@ function round2 () {
         round3()
     }
 }
-let scene1_flag = 0
-let scene2_flag = 0
-let scene3_flag = 0
-let scene4_flag = 0
-let scene5_flag = 0
 let checkmark: Sprite = null
 let gameover: Sprite = null
 let rhtyhm_game_opponent: Sprite = null
 let rhthym_game_player: Sprite = null
+let rhthym_game_boss: Sprite = null
 let scene4_final_scene = 0
 let sorting_game_player: Sprite = null
 let sorting_game_boss: Sprite = null
 let pressA: Sprite = null
 let scene1_dialogue1_movement_flag = 0
+let scene4_initialDialogue = 0
+let scene2_final_dialogue_flag = 0
 let wrongmark: Sprite = null
+let scene4_game_ready_flag = 0
 let go: Sprite = null
 let _set: Sprite = null
 let intro_carlos_movement_flag_1 = 0
 let old_guy: Sprite = null
 let intro_flag = 0
+let scene_2_initial_dialogue = 0
 let arrow_list7: Sprite[] = []
 let arrow_list6: Sprite[] = []
 let arrow_list5: Sprite[] = []
 let arrow_list4: Sprite[] = []
 let arrow_list3: Sprite[] = []
 let arrow_list2: Sprite[] = []
+let miss_counter = 0
 let arrow_y = 0
 let arrow_x: number[] = []
-let miss_counter = 0
 let gameover_flag = 0
 let pressB: Sprite = null
 let fake_card: Sprite = null
@@ -8378,32 +8409,32 @@ let scene_1_conversation2_flag = 0
 let speed = 0
 let textSprite: TextSprite = null
 let dialogueText = ""
-let scene4_game_ready_flag = 0
-let scene4_initialDialogue = 0
-let scene2_final_dialogue_flag = 0
-let rhthym_game_boss: Sprite = null
-let scene_2_initial_dialogue = 0
 let scene_1_conversation_flag = 0
 let grandpa_dialogue_1_flag = 0
 let bottom_arrow2: Sprite = null
-let right_arrow2: Sprite = null
 let left_arrow2: Sprite = null
 let ready: Sprite = null
+let right_arrow2: Sprite = null
+let scene4_flag = 0
+let scene3_flag = 0
 let scene4_inital_scene = 0
 let scene3_start_flag = 0
 let scene2_game_ready2_flag = 0
-let scene5_dialogue_flag = 0
+let scene5_flag = 0
+let scene4_finalDialogue = 0
 let s4_round3 = 0
 let s4_round2 = 0
 let selector: Sprite = null
 let s4_round1 = 0
+let scene5_dialogue_flag = 0
+let scene2_flag = 0
+let scene1_flag = 0
 let scene_2_state = 0
 let miss: Sprite = null
 let top_arrow2: Sprite = null
 let expected_arrow_index = 0
 let arrow_list: Sprite[] = []
 let scene2_game_ready_flag = 0
-let scene4_finalDialogue = 0
 initialize_scene1()
 game.onUpdate(function () {
     // Only show next text if not already showing
